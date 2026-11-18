@@ -26,7 +26,11 @@ const els = {
   statTraducidas: document.getElementById("stat-traducidas"),
   generatedAt: document.getElementById("generated-at"),
   btnRandom: document.getElementById("btn-random"),
-  randomUseFilters: document.getElementById("random-use-filters"),
+  randomPoolCount: document.getElementById("random-pool-count"),
+  randomFilterTorneo: document.getElementById("random-filter-torneo"),
+  randomFilterIdioma: document.getElementById("random-filter-idioma"),
+  randomFilterInfoslide: document.getElementById("random-filter-infoslide"),
+  btnClearRandomFilters: document.getElementById("btn-clear-random-filters"),
   randomStage: document.getElementById("random-stage"),
   teamsFormGrid: document.getElementById("teams-form-grid"),
   btnDrawPositions: document.getElementById("btn-draw-positions"),
@@ -198,13 +202,29 @@ function renderRandomStage() {
   }
 }
 
-function pickRandomMotion() {
-  if (!state.data) return;
-  const pool =
-    els.randomUseFilters.checked && state.filtered.length > 0
-      ? state.filtered
-      : state.data.mociones;
+function getRandomPool() {
+  if (!state.data) return [];
+  const torneo = els.randomFilterTorneo.value;
+  const idioma = els.randomFilterIdioma.value;
+  const infoslide = els.randomFilterInfoslide.value;
 
+  return state.data.mociones.filter((m) => {
+    if (torneo && m.torneo !== torneo) return false;
+    if (idioma && m.idioma !== idioma) return false;
+    if (infoslide === "con" && !m.tiene_infoslide) return false;
+    if (infoslide === "sin" && m.tiene_infoslide) return false;
+    return true;
+  });
+}
+
+function updateRandomPoolCount() {
+  const pool = getRandomPool();
+  els.randomPoolCount.textContent = `${pool.length} ${pool.length === 1 ? "disponible" : "disponibles"}`;
+  els.btnRandom.disabled = pool.length === 0;
+}
+
+function pickRandomMotion() {
+  const pool = getRandomPool();
   if (!pool.length) return;
   const idx = Math.floor(Math.random() * pool.length);
   state.randomMotion = pool[idx];
@@ -456,12 +476,18 @@ async function init() {
 
     const torneos = [...new Set(data.mociones.map((m) => m.torneo))];
     for (const t of torneos) {
-      const opt = document.createElement("option");
-      opt.value = t;
-      opt.textContent = t;
-      els.filterTorneo.appendChild(opt);
+      const opt1 = document.createElement("option");
+      opt1.value = t;
+      opt1.textContent = t;
+      els.filterTorneo.appendChild(opt1);
+
+      const opt2 = document.createElement("option");
+      opt2.value = t;
+      opt2.textContent = t;
+      els.randomFilterTorneo.appendChild(opt2);
     }
 
+    updateRandomPoolCount();
     applyFilters();
   } catch (err) {
     els.motionsContainer.innerHTML = `
@@ -474,6 +500,15 @@ async function init() {
   }
 
   els.btnRandom.addEventListener("click", pickRandomMotion);
+  els.randomFilterTorneo.addEventListener("change", updateRandomPoolCount);
+  els.randomFilterIdioma.addEventListener("change", updateRandomPoolCount);
+  els.randomFilterInfoslide.addEventListener("change", updateRandomPoolCount);
+  els.btnClearRandomFilters.addEventListener("click", () => {
+    els.randomFilterTorneo.value = "";
+    els.randomFilterIdioma.value = "";
+    els.randomFilterInfoslide.value = "";
+    updateRandomPoolCount();
+  });
   els.filterText.addEventListener("input", applyFilters);
   els.filterTorneo.addEventListener("change", applyFilters);
   els.filterIdioma.addEventListener("change", applyFilters);

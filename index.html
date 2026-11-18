@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
   <header class="topbar">
@@ -133,10 +133,7 @@
             <p class="muted">Cuando una moción incluye infoslide, se muestra primero. La moción permanece oculta hasta que pulses “Revelar moción”.</p>
           </div>
           <div class="panel-actions">
-            <label class="checkbox-inline">
-              <input type="checkbox" id="random-use-filters" />
-              <span>Usar filtros del banco</span>
-            </label>
+            <span id="random-pool-count" class="badge badge-neutral">0 disponibles</span>
             <button id="btn-random" class="btn btn-primary" type="button">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.1-8.6c.7-1.1 2-1.7 3.3-1.7H22"/>
@@ -147,6 +144,37 @@
               </svg>
               <span>Sortear moción</span>
             </button>
+          </div>
+        </div>
+
+        <div class="random-filters" aria-label="Filtros del sorteador">
+          <div class="filter-group">
+            <label for="random-filter-torneo">Torneo</label>
+            <select id="random-filter-torneo">
+              <option value="">Todos los torneos</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="random-filter-idioma">Idioma</label>
+            <select id="random-filter-idioma">
+              <option value="">Todos</option>
+              <option value="es">Español</option>
+              <option value="en">Inglés (EN -> ES)</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="random-filter-infoslide">Infoslide</label>
+            <select id="random-filter-infoslide">
+              <option value="">Todas</option>
+              <option value="con">Solo con infoslide</option>
+              <option value="sin">Sin infoslide</option>
+            </select>
+          </div>
+
+          <div class="filter-actions">
+            <button id="btn-clear-random-filters" class="btn btn-ghost" type="button">Limpiar</button>
           </div>
         </div>
 
@@ -279,6 +307,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=3"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
