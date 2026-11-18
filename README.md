@@ -4,7 +4,7 @@ Repositorio oficial del banco de mociones e infoslides de **Debate Parlamentario
 
 ## Visualizador web (GitHub Pages)
 
-Disponible en: **https://aaronespejosamac-sys.github.io/Debate-BP---Aaron/**
+Disponible en: **https://aaronespg.github.io/Debate-BP---Aaron/**
 
 Organizado en tres ventanas internas (*Tabs*):
 1. **Sorteador de Mociones**:
