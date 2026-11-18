@@ -109,6 +109,8 @@ function renderRandomStage() {
       </div>
     </div>
 
+    ${state.showRandomInfoslide ? renderInfoslideHtml(m) : ""}
+
     <p class="random-motion-text">${escapeHtml(textoPrincipal)}</p>
 
     ${
@@ -119,8 +121,6 @@ function renderRandomStage() {
            </details>`
         : ""
     }
-
-    ${state.showRandomInfoslide ? renderInfoslideHtml(m) : ""}
 
     ${
       state.revealed
@@ -162,7 +162,7 @@ function pickRandomMotion() {
   if (!pool.length) return;
   const idx = Math.floor(Math.random() * pool.length);
   state.randomMotion = pool[idx];
-  state.showRandomInfoslide = false;
+  state.showRandomInfoslide = Boolean(pool[idx].tiene_infoslide);
   state.revealed = false;
   renderRandomStage();
 }

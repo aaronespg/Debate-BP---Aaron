@@ -220,6 +220,10 @@ h2 {
   border-style: solid;
 }
 
+.random-stage .infoslide-box {
+  margin-bottom: 16px;
+}
+
 .random-meta-bar {
   display: flex;
   justify-content: space-between;
