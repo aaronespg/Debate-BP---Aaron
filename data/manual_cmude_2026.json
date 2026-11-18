@@ -1,0 +1,263 @@
+{
+  "manual_secciones": [
+    {
+      "titulo": "1. Formato Parlamentario Británico (BP) y Roles",
+      "resumen": "Cuatro equipos de dos personas debaten en dos bancadas enfrentadas (Gobierno y Oposición), divididos en Cámaras Altas y Cámaras Bajas.",
+      "puntos": [
+        "Alta de Gobierno (AG): Primer Ministro (define y abre el caso, presenta modelo si aplica) y Viceprimer Ministro (refuta a AO y reconstruye).",
+        "Alta de Oposición (AO): Líder de Oposición (refuta a AG y plantea el caso opositor) y Vicelíder de Oposición (refuta y consolida).",
+        "Baja de Gobierno (BG): Extensionista de Gobierno (aporta una extensión nueva y distinta a AG) y Látigo de Gobierno (resume y compara sin material constructivo nuevo).",
+        "Baja de Oposición (BO): Extensionista de Oposición (aporta extensión nueva frente a toda la bancada de Gobierno) y Látigo de Oposición (cierra el debate comparando bancadas)."
+      ]
+    },
+    {
+      "titulo": "2. Tiempos, Puntos de Información (POI) e Iron-person",
+      "resumen": "Reglas operativas de sala según el Capítulo 1 del Manual CMUDE 2026.",
+      "puntos": [
+        "Duración de discursos: 7 minutos (con 15 segundos de gracia para cerrar una idea; material posterior a 7:15 no se evalúa).",
+        "Tiempo protegido: el primer y el último minuto de cada discurso están protegidos; los POIs se ofrecen entre el minuto 1:00 y el 6:00.",
+        "Tiempo de preparación: 15 minutos desde el anuncio de la moción, sin acceso a internet ni dispositivos electrónicos (salvo autorización de Equidad).",
+        "Iron-person: cuando una persona debate sola por su equipo pronuncia ambos discursos (si es en Cámara Alta, 1.º y 3.º; si es en Cámara Baja, 5.º y 7.º). Solo el mejor puntaje individual cuenta para la tabla de oradoras, pero la suma de ambos discursos define el puntaje del equipo."
+      ]
+    },
+    {
+      "titulo": "3. La Votante Promedio Informada (VPI) y Persuasión",
+      "resumen": "Criterio de evaluación del Capítulo 2: qué evalúa el panel de juezas.",
+      "puntos": [
+        "VPI: persona ficticia neutral, sin sesgos ni conocimiento técnico especializado fuera del sentido común y hechos notorios, que evalúa exclusivamente lo probado en sala.",
+        "Análisis y Mecanismos: las afirmaciones sin explicación causal (‘por qué es cierto’ y ‘por qué importa’) tienen poco peso persuasivo.",
+        "Comparativa y Ponderación (Weighing): ganar un debate requiere explicar por qué tus impactos pesan más (escala, probabilidad, reversibilidad, vulnerabilidad) que los de los demás equipos."
+      ]
+    },
+    {
+      "titulo": "4. Tipos Oficiales de Mociones (Sección 2.7)",
+      "resumen": "La formulación de la moción determina las cargas de prueba de Gobierno y Oposición.",
+      "puntos": [
+        "Moción de Política (EC haría / THW): Gobierno propone y defiende un modelo de acción; Oposición defiende el statu quo o un contramodelo.",
+        "Moción de Análisis — Deber (ECCQ [X] debería): debate normativo sobre lo que un actor debería hacer, sin exigir modelo detallado.",
+        "Moción de Análisis (ECCQ / THBT): juicio de verdad o valor sobre una proposición general.",
+        "Apoyo / Oposición (EC apoya / se opone): defensa o rechazo integral de un fenómeno existente sin modelar su implementación.",
+        "Contrafáctico (EC lamenta / THR): evalúa retrospectivamente si el mundo sería mejor sin X, construyendo un contrafáctico probable.",
+        "Comparativa (ECP / THP): compara directamente un escenario X contra Y (o contra el statu quo) sin argumentos de transición.",
+        "Moción de Actor (EC siendo [A]): obliga a debatir desde los intereses, incentivos y restricciones del actor A.",
+        "Predicción / Prospectiva (EC predice / ECE): analiza la probabilidad futura o deseabilidad prospectiva de un escenario."
+      ]
+    },
+    {
+      "titulo": "5. Modelos, Contramodelos y Deliberación",
+      "resumen": "Reglas sobre definición de debates y cómo juzgan los paneles (Secciones 2.8–3.3).",
+      "puntos": [
+        "Definición ardilla (Squirrelling): restringir o distorsionar injustificadamente el espíritu de la moción para obtener ventaja injusta está prohibido.",
+        "Contramodelo: en mociones de política, Oposición puede presentar un modelo alternativo mutuamente excluyente al de Gobierno.",
+        "Comparativas en BP: el panel ordena del 1.º al 4.º lugar realizando las seis comparativas por pares (AG-AO, AG-BG, AG-BO, AO-BG, AO-BO, BG-BO).",
+        "Errores prohibidos al juzgar: penalizar automáticamente por no aceptar POIs, juzgar con conocimiento externo no probado o exigir 7 minutos exactos para ganar."
+      ]
+    }
+  ],
+  "tabla_oradoras": [
+    {
+      "rango": "95 - 100",
+      "descripcion": "Probablemente uno de los mejores discursos de debate presentado en la historia. Es increíblemente difícil pensar en respuestas satisfactorias para cualquiera de los argumentos presentados. Argumentos perfectos y totalmente convincentes."
+    },
+    {
+      "rango": "92 - 94",
+      "descripcion": "Un discurso increíble, indudablemente uno de los mejores que el panel ha visto jamás. Se involucra de forma increíblemente efectiva con los principales temas del debate y presenta argumentos excepcionales que necesitan respuestas brillantes para ser vencidos. No hay errores o defectos significativos en el discurso."
+    },
+    {
+      "rango": "89 - 91",
+      "descripcion": "Argumentos brillantes que se involucran de forma muy efectiva con los principales temas del debate. Los argumentos son significativamente bien explicados y ejemplificados, y requieren respuestas extremadamente sofisticadas para ser derrotados. Únicamente hay problemas menores que no afectan la fortaleza de los argumentos."
+    },
+    {
+      "rango": "86 - 88",
+      "descripcion": "Los argumentos se involucran con los temas principales del debate y son sumamente convincentes. No presenta fallas lógicas y se requieren respuestas sofisticadas para vencer los argumentos presentados. Únicamente hay pequeñas fallas o errores mínimos, casi insignificantes."
+    },
+    {
+      "rango": "83 - 85",
+      "descripcion": "Los argumentos se involucran con los principales temas del debate y son muy convincentes. Tienen explicaciones muy sólidas que requieren respuestas fuertes para ser vencidos. En pocas ocasiones fallan en responder de forma suficiente a argumentos bien construidos, pero las fallas son muy limitadas."
+    },
+    {
+      "rango": "79 - 82",
+      "descripcion": "Los argumentos son relevantes y se involucran con los principales temas del debate. Están bien construidos, carecen de fallas lógicas evidentes y están bien explicados. Podrían llegar a ser vulnerables a buenas respuestas."
+    },
+    {
+      "rango": "76 - 78",
+      "descripcion": "Los argumentos son mayoritariamente relevantes y se involucran con la mayoría de temas principales. En ocasiones pueden tener fallas en algunas explicaciones o análisis simplista vulnerable a respuestas competentes. Es claro, por lo que se puede seguir y darle crédito."
+    },
+    {
+      "rango": "73 - 75",
+      "descripcion": "Los argumentos son mayoritariamente relevantes, aunque pueden fallar en involucrarse de manera suficiente con uno o varios temas relevantes. Son lógicos, pero tienden a ser simplistas, con algunas fallas lógicas y vulnerables a respuestas competentes. Es suficientemente claro para seguirlo y darle crédito."
+    },
+    {
+      "rango": "70 - 72",
+      "descripcion": "Los argumentos son frecuentemente relevantes. Tienen algunas explicaciones, pero con regularidad hay fallas lógicas evidentes y/o significativas. A veces es difícil de seguir y, por tanto, dar crédito a la totalidad del discurso."
+    },
+    {
+      "rango": "67 - 69",
+      "descripcion": "Usualmente los argumentos son relevantes. Casi todos tienen algunas explicaciones, pero presentan fallas lógicas evidentes y significativas. A veces es claro, pero generalmente es difícil de seguir y difícil dar crédito al material presentado."
+    },
+    {
+      "rango": "64 - 66",
+      "descripcion": "Algunos de los argumentos presentados son relevantes. Generalmente tienen pocas explicaciones y presentan fallas lógicas significativas. Frecuentemente es poco claro, lo que dificulta darle mucho crédito al discurso."
+    },
+    {
+      "rango": "61 - 63",
+      "descripcion": "Ocasionalmente se presentan algunas afirmaciones relevantes y la mayoría son construidas como argumentos. Ocasionalmente las afirmaciones se presentan como explicaciones, pero con fallas lógicas muy significativas. Frecuentemente es poco claro y confuso."
+    },
+    {
+      "rango": "58 - 60",
+      "descripcion": "Pocas veces las afirmaciones son relevantes. No son construidas y presentadas como argumentos; puede haber esfuerzos por presentar explicaciones, pero son muy vagas. Es muy difícil de seguir."
+    },
+    {
+      "rango": "55 - 57",
+      "descripcion": "Se presentan un par de afirmaciones casi nunca relevantes. Las afirmaciones no están construidas como razonamientos, son más observaciones. El discurso es difícil de seguir casi en su totalidad."
+    },
+    {
+      "rango": "50 - 54",
+      "descripcion": "El contenido es irrelevante. No presenta nada que sugiera análisis. Es imposible seguir el discurso en su mayoría, lo que hace difícil darle crédito alguno."
+    }
+  ],
+  "tabla_juezas_principales": [
+    {
+      "puntos": "10",
+      "nivel": "Excepcional",
+      "precision": "Resultados extremadamente exactos, reflejados en una apreciación precisa y evaluación meticulosa de las comparativas ‘cerradas’ entre equipos; reconocimiento exhaustivo de todas las comparativas necesarias.",
+      "razonamiento": "Justificación extremadamente bien sustentada, con explicaciones casi sin fallas, profundas, perspicaces y matizadas; identificación explícita y profunda justificación de métricas y criterios.",
+      "discusion": "Comentarios sumamente astutos y perspicaces; sumamente eficiente, excelente capacidad para gestionar la deliberación y feedback constructivo."
+    },
+    {
+      "puntos": "9",
+      "nivel": "Excelente",
+      "precision": "Resultados muy exactos, con apreciación correcta de las comparativas ‘cerradas’ entre equipos; reconocimiento exhaustivo de la mayoría de comparativas necesarias.",
+      "razonamiento": "Justificación muy bien sustentada, con explicaciones claramente definidas, profundas, perspicaces y matizadas; muy buenos esfuerzos para justificar métricas y criterios.",
+      "discusion": "Comentarios muy perspicaces sobre el debate; consistentemente eficiente, demuestra buen juicio y efectividad para gestionar la deliberación."
+    },
+    {
+      "puntos": "8",
+      "nivel": "Muy bien",
+      "precision": "Resultados precisos, con juicio en gran parte correcto sobre comparaciones ‘cercanas’ entre equipos; reconocimiento detallado de la mayoría de comparativas necesarias.",
+      "razonamiento": "Justificación comprensible con explicaciones bien definidas, profundas y matizadas; muy de vez en cuando presunciones menores o falta de claridad menor; métricas presentadas pero no justificadas explícitamente.",
+      "discusion": "En su mayoría ofrece comentarios perspicaces del debate, en gran parte eficiente y efectiva al gestionar la deliberación."
+    },
+    {
+      "puntos": "7",
+      "nivel": "Bien",
+      "precision": "Resultados precisos con posiciones generalmente correctas, aunque potencialmente erróneas en comparativas ‘cerradas’; reconocimiento cuidadoso de la mayoría de comparativas.",
+      "razonamiento": "Justificación generalmente bien sustentada con explicaciones bien definidas; ocasionalmente presunciones menores, sesgos o falta de claridad menor; métricas presentadas pero no justificadas.",
+      "discusion": "Comentarios relevantes en la generalidad; eficiente pero con errores ocasionales o problemas de priorización al deliberar; criterio apropiado (a veces limitado) en el feedback."
+    },
+    {
+      "puntos": "6",
+      "nivel": "Sobre el promedio",
+      "precision": "Resultados mayoritariamente correctos, aunque puede haber errores en relación a las comparativas ‘cerradas’ entre equipos.",
+      "razonamiento": "Buen intento por justificar la decisión; aprecia los choques principales y cómo se resuelven; ocasionales presunciones o sesgos menores; poca claridad en las métricas usadas.",
+      "discusion": "Algunos comentarios útiles; gestión de la deliberación en cierta medida ineficiente y apenas satisfactoria; fallas de entendimiento en temas principales durante el feedback."
+    },
+    {
+      "puntos": "5",
+      "nivel": "Promedio",
+      "precision": "Resultados generalmente precisos en la mayoría de choques ‘evidentes’; puede fallar en comparativas ‘cerradas’ o descuidar una parte significativa del debate.",
+      "razonamiento": "Cierto esfuerzo por justificar la decisión; aprecia choques y temas fundamentales, pero regularmente con presunciones o sesgos personales y falta de claridad en comparativas específicas.",
+      "discusion": "A veces ineficiente al gestionar la deliberación; problemas para comprender a una o más personas del panel; falta de entendimiento significativa sobre criterios de adjudicación."
+    },
+    {
+      "puntos": "4",
+      "nivel": "Debajo del promedio",
+      "precision": "Resultados inexactos que, sin embargo, identifican adecuadamente las posiciones ‘evidentes’; una o varias interpretaciones incorrectas y falta de capacidad para identificar argumentos importantes.",
+      "razonamiento": "Esfuerzos insatisfactorios por justificar la decisión; explicaciones pueden no justificar los resultados; frecuentes presunciones o sesgos y falta de claridad en la mayoría de comparativas.",
+      "discusion": "Incompetencia para gestionar la deliberación; problemas para incluir a todas las juezas del panel; hasta cierto punto inoportuna al presentar feedback."
+    },
+    {
+      "puntos": "3",
+      "nivel": "Deficiente",
+      "precision": "Resultados inexactos que fallan al identificar una o más posiciones ‘evidentes’; múltiples interpretaciones erróneas fundamentales e incapacidad para seguir argumentos importantes.",
+      "razonamiento": "Esfuerzos deficientes por justificar; falta de apreciación de choques importantes; frecuentes presunciones o sesgos que afectan severamente los resultados; justificación ocasionalmente irrelevante.",
+      "discusion": "Incompetencia para gestionar la deliberación; problemas para incluir a las juezas del panel; en su mayoría inoportuna al presentar feedback."
+    },
+    {
+      "puntos": "2",
+      "nivel": "Muy deficiente",
+      "precision": "Resultados significativamente inexactos que fallan completamente en identificar más de una posición ‘evidente’; varias interpretaciones erróneas centrales y evidente incapacidad de seguir el debate.",
+      "razonamiento": "Poco o nulo esfuerzo por justificar; falta de apreciación de choques importantes; frecuentes sesgos que dañan severamente la justificación y explicaciones irrelevantes.",
+      "discusion": "Gran incompetencia para gestionar la deliberación; problemas para incluir al panel; inoportuna y hasta cierto punto contraproducente al presentar feedback."
+    },
+    {
+      "puntos": "1",
+      "nivel": "Deplorable",
+      "precision": "Resultado completamente inexacto que falla totalmente al identificar una posición ‘evidente’; problemas fundamentales de entendimiento del debate y del formato BP.",
+      "razonamiento": "No hay intento razonable de justificar; apreciación equivocada de los choques principales; sesgos constantes y explicaciones irrelevantes para comprender los resultados.",
+      "discusion": "Extrema incompetencia para gestionar la deliberación; problemas para incluir al panel; inoportuna y muy contraproducente al presentar feedback."
+    }
+  ],
+  "tabla_juezas_panelistas": [
+    {
+      "puntos": "10",
+      "nivel": "Excepcional",
+      "precision": "Resultados extremadamente exactos, reflejados en una apreciación precisa y evaluación meticulosa de las comparativas ‘cerradas’ (denotadas en puntos de oradora); reconocimiento exhaustivo de todas las comparativas.",
+      "razonamiento": "Justificación extremadamente bien sustentada, explicaciones casi sin fallas, profundas, perspicaces y matizadas; identificación explícita de métricas y criterios; indudablemente debe ser principal.",
+      "discusion": "Contribución sobresaliente que refleja juicio excepcional sobre lo relevante y útil, con estrategia clara de priorización y comentarios claramente analizados."
+    },
+    {
+      "puntos": "9",
+      "nivel": "Excelente",
+      "precision": "Resultados muy exactos en comparativas ‘cerradas’ (denotadas en puntos de oradora); reconocimiento exhaustivo de la mayoría de comparativas necesarias.",
+      "razonamiento": "Justificación muy bien sustentada, explicaciones claras, profundas y matizadas; buenos esfuerzos para justificar métricas y criterios; debería ser principal.",
+      "discusion": "Contribuciones valiosas que reflejan buen juicio sobre lo relevante y útil para la deliberación; participación muy útil."
+    },
+    {
+      "puntos": "8",
+      "nivel": "Muy bien",
+      "precision": "Resultados precisos, con juicio en gran parte correcto sobre comparaciones ‘cercanas’; reconocimiento detallado de la mayoría de comparativas necesarias.",
+      "razonamiento": "Justificación comprensible con explicaciones profundas y matizadas; muy de vez en cuando presunciones menores; métricas presentadas pero no justificadas explícitamente; alto potencial para ser principal.",
+      "discusion": "Contribución exhaustiva que refleja buen juicio respecto a lo relevante para la discusión; participación muy útil."
+    },
+    {
+      "puntos": "7",
+      "nivel": "Bien",
+      "precision": "Resultados precisos con posiciones generalmente correctas, pero potencialmente erróneas en comparativas ‘cerradas’; reconocimiento cuidadoso de la mayoría de comparativas.",
+      "razonamiento": "Justificación generalmente bien sustentada con explicaciones bien definidas; ocasionalmente presunciones menores o falta de claridad menor; potencial de ser principal.",
+      "discusion": "Buenas contribuciones con buen juicio sobre lo relevante y útil; participación útil, solo con menores fallas de atención o menores errores al juzgar."
+    },
+    {
+      "puntos": "6",
+      "nivel": "Sobre el promedio",
+      "precision": "Resultados mayoritariamente correctos, aunque puede haber errores en relación a las comparativas ‘cerradas’ entre equipos.",
+      "razonamiento": "Buen intento por justificar la decisión; demuestra cierto grado de apreciación de los choques principales; ocasionales presunciones o sesgos menores y falta de claridad en algunas comparativas.",
+      "discusion": "Buena contribución que mayoritariamente refleja buen juicio sobre lo relevante; participación útil con algunas fallas de atención y/o al juzgar."
+    },
+    {
+      "puntos": "5",
+      "nivel": "Promedio",
+      "precision": "Resultados precisos en la mayoría de choques ‘evidentes’; puede fallar al juzgar comparativas ‘cerradas’ o descuidar una parte significativa pero no fundamental del debate.",
+      "razonamiento": "Cierto esfuerzo por justificar la decisión; aprecia choques fundamentales, pero regularmente con presunciones o sesgos personales y falta de claridad en comparativas específicas.",
+      "discusion": "Contribución promedio que refleja cierto juicio sobre lo relevante; útil en la generalidad, pero puede fallar al responder cuestionamientos específicos o dar respuestas genéricas."
+    },
+    {
+      "puntos": "4",
+      "nivel": "Debajo del promedio",
+      "precision": "Resultados inexactos que, sin embargo, identifican adecuadamente las posiciones ‘evidentes’; una o varias interpretaciones incorrectas y cierta falta de capacidad para seguir argumentos importantes.",
+      "razonamiento": "Esfuerzos insatisfactorios por justificar; explicaciones pueden no justificar los resultados; frecuentes presunciones o sesgos y falta de claridad en la mayoría de comparativas.",
+      "discusion": "Contribución que en ocasiones puede ser irrelevante; a veces útil, pero generalmente falla al responder cuestionamientos específicos y presenta respuestas genéricas."
+    },
+    {
+      "puntos": "3",
+      "nivel": "Deficiente",
+      "precision": "Resultados inexactos que identifican las posiciones ‘evidentes’, pero reflejan una o varias interpretaciones incorrectas y falta de capacidad para seguir argumentos o respuestas importantes.",
+      "razonamiento": "Esfuerzos deficientes por justificar; falta de apreciación de los choques más importantes; frecuentes presunciones o sesgos severos; justificación ocasionalmente irrelevante.",
+      "discusion": "Contribución por debajo del promedio que refleja entendimiento hasta cierto punto equivocado del debate; en raras ocasiones útil; comentarios generales y poco útiles."
+    },
+    {
+      "puntos": "2",
+      "nivel": "Muy deficiente",
+      "precision": "Resultados significativamente inexactos que fallan completamente en identificar más de una posición ‘evidente’; varias interpretaciones erróneas centrales e incapacidad de seguir el debate.",
+      "razonamiento": "Poco o nulo esfuerzo por justificar; falta de apreciación de los choques más importantes; frecuentes sesgos que dañan severamente la justificación y falta de claridad.",
+      "discusion": "Deficiente contribución a la discusión; participación poco útil y en momentos contraproducente para la deliberación."
+    },
+    {
+      "puntos": "1",
+      "nivel": "Deplorable",
+      "precision": "Resultado completamente inexacto que falla totalmente al identificar al menos una posición ‘evidente’; problemas fundamentales de entendimiento del debate y del formato BP.",
+      "razonamiento": "No hay intento razonable de justificar; apreciación equivocada de los choques principales; sesgos constantes que dañan la justificación y explicaciones irrelevantes.",
+      "discusion": "Contribución muy deficiente; obstruye significativamente la deliberación; participación detrimental para el panel."
+    }
+  ]
+}

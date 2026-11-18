@@ -47,6 +47,10 @@ const els = {
   btnClearFilters: document.getElementById("btn-clear-filters"),
   resultsCount: document.getElementById("results-count"),
   motionsContainer: document.getElementById("motions-container"),
+  manualSectionsContainer: document.getElementById("manual-sections-container"),
+  rubricOradoras: document.getElementById("rubric-oradoras"),
+  rubricPrincipales: document.getElementById("rubric-principales"),
+  rubricPanelistas: document.getElementById("rubric-panelistas"),
 };
 
 function escapeHtml(str) {
@@ -465,10 +469,113 @@ function renderMotionsList() {
   els.motionsContainer.innerHTML = html.join("");
 }
 
+function initSubtabs() {
+  const buttons = document.querySelectorAll(".subtab-btn");
+  const panels = document.querySelectorAll(".subtab-panel");
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.dataset.subtab;
+      buttons.forEach((b) => b.classList.toggle("active", b === btn));
+      panels.forEach((p) => {
+        const active = p.id === targetId;
+        p.classList.toggle("active", active);
+        p.hidden = !active;
+      });
+    });
+  });
+}
+
+function renderJudgeTable(rows) {
+  return `
+    <div class="table-wrap">
+      <table class="rubric-table">
+        <thead>
+          <tr>
+            <th>Puntos</th>
+            <th>Nivel</th>
+            <th>Precisión</th>
+            <th>Razonamiento / Justificación</th>
+            <th>Discusión</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows
+            .map(
+              (r) => `
+              <tr>
+                <td><span class="score-pill">${escapeHtml(r.puntos)}</span></td>
+                <td><strong>${escapeHtml(r.nivel)}</strong></td>
+                <td>${escapeHtml(r.precision)}</td>
+                <td>${escapeHtml(r.razonamiento)}</td>
+                <td>${escapeHtml(r.discusion)}</td>
+              </tr>
+            `
+            )
+            .join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+async function loadManualAndRubrics() {
+  try {
+    const res = await fetch("data/manual_cmude_2026.json?v=8", { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const manual = await res.json();
+
+    els.manualSectionsContainer.innerHTML = manual.manual_secciones
+      .map(
+        (sec) => `
+        <article class="manual-card">
+          <h3>${escapeHtml(sec.titulo)}</h3>
+          <p>${escapeHtml(sec.resumen)}</p>
+          <ul>
+            ${sec.puntos.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}
+          </ul>
+        </article>
+      `
+      )
+      .join("");
+
+    els.rubricOradoras.innerHTML = `
+      <div class="table-wrap">
+        <table class="rubric-table">
+          <thead>
+            <tr>
+              <th>Puntos</th>
+              <th>Comentarios cualitativos</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${manual.tabla_oradoras
+              .map(
+                (r) => `
+                <tr>
+                  <td><span class="score-pill">${escapeHtml(r.rango)}</span></td>
+                  <td>${escapeHtml(r.descripcion)}</td>
+                </tr>
+              `
+              )
+              .join("")}
+          </tbody>
+        </table>
+      </div>
+    `;
+
+    els.rubricPrincipales.innerHTML = renderJudgeTable(manual.tabla_juezas_principales);
+    els.rubricPanelistas.innerHTML = renderJudgeTable(manual.tabla_juezas_panelistas);
+  } catch (err) {
+    els.manualSectionsContainer.innerHTML = `<div class="empty-state">No se pudo cargar la guía del manual (${escapeHtml(err.message)}).</div>`;
+  }
+}
+
 async function init() {
   initTheme();
   initTabs();
+  initSubtabs();
   initPositionDrawer();
+  loadManualAndRubrics();
 
   try {
     const res = await fetch("data/mociones.json?v=7", { cache: "no-store" });

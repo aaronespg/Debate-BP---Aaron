@@ -31,7 +31,10 @@ Construir y mantener un banco de mociones e infoslides de Debate Parlamentario B
         - Agrupación por torneo y ronda.
         - Buscador en tiempo real y filtros por torneo, idioma y presencia de infoslide.
         - Desplegable opcional para consultar el original en inglés.
-   - Selector de tema **Claro / Oscuro** y tipografía editorial profesional.
+     4. **Manual CMUDE 2026**:
+        - Guía explicativa organizada por capítulos (formato BP y roles, tiempos/POIs/Iron-person, VPI y persuasión, tipos oficiales de moción de la Sección 2.7, modelos y deliberación), con opción de descarga y visor PDF.
+     5. **Tablas de Calificación**:
+        - Pestaña dedicada exclusivamente a los Apéndices A y B del Manual CMUDE 2026: **Escala de Persona Oradora (50–100)**, **Tabla de Feedback a Juezas Principales (1–10)** y **Tabla de Feedback a Juezas Panelistas y Trainee (1–10)**.
 
 3. **Capa de gestión (`gestion/`)**
    - `gestion/planes/`: planificación y evolución del proyecto.

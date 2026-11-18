@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
   <header class="topbar">
@@ -65,6 +65,16 @@
             <line x1="16" y1="17" x2="8" y2="17"/>
           </svg>
           <span>Manual CMUDE 2026</span>
+        </button>
+
+        <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="tab-tablas">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 3v18h18"/>
+            <path d="M18 17V9"/>
+            <path d="M13 17V5"/>
+            <path d="M8 17v-3"/>
+          </svg>
+          <span>Tablas de Calificación</span>
         </button>
       </nav>
     </div>
@@ -319,13 +329,13 @@
       </div>
     </section>
 
-    <!-- TAB 4: Manual CMUDE 2026 -->
+    <!-- TAB 4: Manual CMUDE 2026 (Guía explicativa) -->
     <section id="tab-manual" class="tab-panel" role="tabpanel" hidden>
       <div class="card">
         <div class="panel-header">
           <div>
-            <h2>Manual Oficial CMUDE 2026</h2>
-            <p class="muted">Documento de referencia para reglas BP, adjudicación y clasificación oficial de tipos de moción (Sección 2.7).</p>
+            <h2>Manual CMUDE 2026 — Guía Explicativa</h2>
+            <p class="muted">Síntesis organizada de las reglas centrales, roles, VPI, tipos de mociones (Sección 2.7), modelos y criterios de adjudicación.</p>
           </div>
           <div class="panel-actions">
             <a class="btn btn-primary" href="Manual_CMUDE_2026.pdf" download="Manual_CMUDE_2026.pdf">
@@ -334,23 +344,41 @@
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
               </svg>
-              <span>Descargar PDF</span>
+              <span>Descargar PDF completo</span>
             </a>
           </div>
         </div>
 
-        <div class="manual-taxonomy-grid">
-          <div class="taxonomy-item"><strong>Moción de Política (EC haría / THW)</strong><span>Propuesta de acción concreta con modelo en Gobierno.</span></div>
-          <div class="taxonomy-item"><strong>Análisis — Deber (ECCQ [X] debería)</strong><span>Evaluación normativa sobre lo que un agente debería hacer.</span></div>
-          <div class="taxonomy-item"><strong>Moción de Análisis (ECCQ / THBT)</strong><span>Juicio de valor o verdad sobre una afirmación sin modelo.</span></div>
-          <div class="taxonomy-item"><strong>Apoyo / Oposición (EC apoya / se opone)</strong><span>Postura integral a favor o en contra de un fenómeno o medida.</span></div>
-          <div class="taxonomy-item"><strong>Contrafáctico (EC lamenta / THR)</strong><span>Evaluación retrospectiva frente a un mundo alternativo probable.</span></div>
-          <div class="taxonomy-item"><strong>Comparativa (ECP / THP)</strong><span>Comparación directa entre un escenario X y un alternativo Y o statu quo.</span></div>
-          <div class="taxonomy-item"><strong>Moción de Actor (EC siendo [A])</strong><span>Debate desde los intereses y perspectiva específica de un actor.</span></div>
-          <div class="taxonomy-item"><strong>Predicción / Prospectiva (EC predice / ECE)</strong><span>Probabilidad futura o deseabilidad prospectiva de un hecho.</span></div>
+        <div id="manual-sections-container" class="manual-sections-grid">
+          <div class="loading">Cargando guía del manual...</div>
         </div>
 
-        <iframe src="Manual_CMUDE_2026.pdf#view=FitH" class="pdf-viewer" title="Manual Oficial CMUDE 2026"></iframe>
+        <details class="original-en manual-pdf-toggle">
+          <summary>Abrir visor PDF completo del Manual CMUDE 2026</summary>
+          <iframe src="Manual_CMUDE_2026.pdf#view=FitH" class="pdf-viewer" title="Manual Oficial CMUDE 2026"></iframe>
+        </details>
+      </div>
+    </section>
+
+    <!-- TAB 5: Tablas de Calificación Oficiales -->
+    <section id="tab-tablas" class="tab-panel" role="tabpanel" hidden>
+      <div class="card">
+        <div class="panel-header">
+          <div>
+            <h2>Tablas de Calificación Oficiales (CMUDE 2026)</h2>
+            <p class="muted">Apéndices A y B: escala de puntuación de persona oradora y las dos tablas de feedback para personas juezas.</p>
+          </div>
+        </div>
+
+        <div class="subtabs-nav" role="tablist" aria-label="Tablas de calificación">
+          <button class="subtab-btn active" type="button" data-subtab="rubric-oradoras">Persona Oradora (50 - 100)</button>
+          <button class="subtab-btn" type="button" data-subtab="rubric-principales">Jueza Principal (1 - 10)</button>
+          <button class="subtab-btn" type="button" data-subtab="rubric-panelistas">Jueza Panelista / Trainee (1 - 10)</button>
+        </div>
+
+        <div id="rubric-oradoras" class="subtab-panel active"></div>
+        <div id="rubric-principales" class="subtab-panel" hidden></div>
+        <div id="rubric-panelistas" class="subtab-panel" hidden></div>
       </div>
     </section>
   </main>
@@ -364,6 +392,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=7"></script>
+  <script src="app.js?v=8"></script>
 </body>
 </html>
