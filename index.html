@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body>
   <header class="topbar">
@@ -55,6 +55,16 @@
             <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/>
           </svg>
           <span>Banco de Mociones</span>
+        </button>
+
+        <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="tab-manual">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+          <span>Manual CMUDE 2026</span>
         </button>
       </nav>
     </div>
@@ -268,6 +278,20 @@
         </div>
 
         <div class="filter-group">
+          <label for="filter-tema">Tema</label>
+          <select id="filter-tema">
+            <option value="">Todos los temas</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-tipo">Tipo de moción</label>
+          <select id="filter-tipo">
+            <option value="">Todos los tipos</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
           <label for="filter-idioma">Idioma</label>
           <select id="filter-idioma">
             <option value="">Todos</option>
@@ -294,6 +318,41 @@
         <div class="loading">Cargando banco de mociones...</div>
       </div>
     </section>
+
+    <!-- TAB 4: Manual CMUDE 2026 -->
+    <section id="tab-manual" class="tab-panel" role="tabpanel" hidden>
+      <div class="card">
+        <div class="panel-header">
+          <div>
+            <h2>Manual Oficial CMUDE 2026</h2>
+            <p class="muted">Documento de referencia para reglas BP, adjudicación y clasificación oficial de tipos de moción (Sección 2.7).</p>
+          </div>
+          <div class="panel-actions">
+            <a class="btn btn-primary" href="Manual_CMUDE_2026.pdf" download="Manual_CMUDE_2026.pdf">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span>Descargar PDF</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="manual-taxonomy-grid">
+          <div class="taxonomy-item"><strong>Moción de Política (EC haría / THW)</strong><span>Propuesta de acción concreta con modelo en Gobierno.</span></div>
+          <div class="taxonomy-item"><strong>Análisis — Deber (ECCQ [X] debería)</strong><span>Evaluación normativa sobre lo que un agente debería hacer.</span></div>
+          <div class="taxonomy-item"><strong>Moción de Análisis (ECCQ / THBT)</strong><span>Juicio de valor o verdad sobre una afirmación sin modelo.</span></div>
+          <div class="taxonomy-item"><strong>Apoyo / Oposición (EC apoya / se opone)</strong><span>Postura integral a favor o en contra de un fenómeno o medida.</span></div>
+          <div class="taxonomy-item"><strong>Contrafáctico (EC lamenta / THR)</strong><span>Evaluación retrospectiva frente a un mundo alternativo probable.</span></div>
+          <div class="taxonomy-item"><strong>Comparativa (ECP / THP)</strong><span>Comparación directa entre un escenario X y un alternativo Y o statu quo.</span></div>
+          <div class="taxonomy-item"><strong>Moción de Actor (EC siendo [A])</strong><span>Debate desde los intereses y perspectiva específica de un actor.</span></div>
+          <div class="taxonomy-item"><strong>Predicción / Prospectiva (EC predice / ECE)</strong><span>Probabilidad futura o deseabilidad prospectiva de un hecho.</span></div>
+        </div>
+
+        <iframe src="Manual_CMUDE_2026.pdf#view=FitH" class="pdf-viewer" title="Manual Oficial CMUDE 2026"></iframe>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -305,6 +364,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>

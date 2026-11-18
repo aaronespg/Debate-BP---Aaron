@@ -40,6 +40,8 @@ const els = {
   btnCopyPositions: document.getElementById("btn-copy-positions"),
   filterText: document.getElementById("filter-text"),
   filterTorneo: document.getElementById("filter-torneo"),
+  filterTema: document.getElementById("filter-tema"),
+  filterTipo: document.getElementById("filter-tipo"),
   filterIdioma: document.getElementById("filter-idioma"),
   filterInfoslide: document.getElementById("filter-infoslide"),
   btnClearFilters: document.getElementById("btn-clear-filters"),
@@ -373,16 +375,20 @@ function applyFilters() {
   if (!state.data) return;
   const q = els.filterText.value.trim().toLowerCase();
   const torneo = els.filterTorneo.value;
+  const tema = els.filterTema.value;
+  const tipo = els.filterTipo.value;
   const idioma = els.filterIdioma.value;
   const infoslide = els.filterInfoslide.value;
 
   state.filtered = state.data.mociones.filter((m) => {
     if (torneo && m.torneo !== torneo) return false;
+    if (tema && m.tema !== tema) return false;
+    if (tipo && m.tipo_mocion !== tipo) return false;
     if (idioma && m.idioma !== idioma) return false;
     if (infoslide === "con" && !m.tiene_infoslide) return false;
     if (infoslide === "sin" && m.tiene_infoslide) return false;
     if (q) {
-      const haystack = [m.torneo, m.ronda, m.mocion, m.mocion_es, m.infoslide, m.infoslide_es]
+      const haystack = [m.torneo, m.ronda, m.tema, m.tipo_mocion, m.mocion, m.mocion_es, m.infoslide, m.infoslide_es]
         .filter(Boolean)
         .join(" ")
         .toLowerCase();
@@ -422,6 +428,8 @@ function renderMotionsList() {
             <div class="motion-top">
               <div class="motion-badges">
                 <span class="badge badge-neutral">${escapeHtml(m.ronda)}</span>
+                ${m.tema ? `<span class="badge badge-accent">${escapeHtml(m.tema)}</span>` : ""}
+                ${m.tipo_mocion ? `<span class="badge badge-warn">${escapeHtml(m.tipo_mocion)}</span>` : ""}
                 ${m.tiene_infoslide ? `<span class="badge badge-info">Infoslide</span>` : ""}
                 ${esIngles ? `<span class="badge badge-neutral">EN -> ES</span>` : `<span class="badge badge-neutral">ES</span>`}
               </div>
@@ -463,7 +471,7 @@ async function init() {
   initPositionDrawer();
 
   try {
-    const res = await fetch("data/mociones.json");
+    const res = await fetch("data/mociones.json?v=7", { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     state.data = data;
@@ -484,18 +492,22 @@ async function init() {
 
     const temas = [...new Set(data.mociones.map((m) => m.tema).filter(Boolean))].sort();
     for (const tema of temas) {
-      const opt = document.createElement("option");
-      opt.value = tema;
-      opt.textContent = tema;
-      els.randomFilterTema.appendChild(opt);
+      for (const sel of [els.randomFilterTema, els.filterTema]) {
+        const opt = document.createElement("option");
+        opt.value = tema;
+        opt.textContent = tema;
+        sel.appendChild(opt);
+      }
     }
 
     const tipos = [...new Set(data.mociones.map((m) => m.tipo_mocion).filter(Boolean))].sort();
     for (const tipo of tipos) {
-      const opt = document.createElement("option");
-      opt.value = tipo;
-      opt.textContent = tipo;
-      els.randomFilterTipo.appendChild(opt);
+      for (const sel of [els.randomFilterTipo, els.filterTipo]) {
+        const opt = document.createElement("option");
+        opt.value = tipo;
+        opt.textContent = tipo;
+        sel.appendChild(opt);
+      }
     }
 
     updateRandomPoolCount();
@@ -522,11 +534,15 @@ async function init() {
   });
   els.filterText.addEventListener("input", applyFilters);
   els.filterTorneo.addEventListener("change", applyFilters);
+  els.filterTema.addEventListener("change", applyFilters);
+  els.filterTipo.addEventListener("change", applyFilters);
   els.filterIdioma.addEventListener("change", applyFilters);
   els.filterInfoslide.addEventListener("change", applyFilters);
   els.btnClearFilters.addEventListener("click", () => {
     els.filterText.value = "";
     els.filterTorneo.value = "";
+    els.filterTema.value = "";
+    els.filterTipo.value = "";
     els.filterIdioma.value = "";
     els.filterInfoslide.value = "";
     applyFilters();
