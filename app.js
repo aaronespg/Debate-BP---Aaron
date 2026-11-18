@@ -330,6 +330,7 @@ function initPositionDrawer() {
       .join("\n");
 
     els.positionsResult.hidden = false;
+    els.positionsResult.scrollIntoView({ behavior: "smooth", block: "nearest" });
   });
 
   els.btnCopyPositions.addEventListener("click", async () => {
