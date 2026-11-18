@@ -5,7 +5,8 @@ Construir y mantener un banco de mociones e infoslides de Debate Parlamentario B
 
 ## 2. Reglas de diseño y código
 - **Cero emojis**: queda prohibido el uso de emojis en frontend, backend y documentación (ver `.agent/rules/no-emojis.md`).
-- **Iconografía profesional**: la interfaz web utiliza iconos vectoriales SVG (estilo Lucide) con trazo limpio y consistente.
+- **Identidad visual oficial**: el encabezado y el favicon de la página utilizan `LOGO RHETOR.png` como imagen principal de **Rhetor - UNAL**, acompañada de iconos vectoriales SVG uniformes en controles y pestañas.
+- **Publicación**: desplegado en GitHub Pages bajo `https://aaronespg.github.io/Debate-BP---Aaron/`.
 
 ## 3. Arquitectura del sistema
 
