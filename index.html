@@ -3,20 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Banco de Mociones BP | Debate Parlamentario Británico</title>
+  <title>Banco de Mociones de Rhetor - UNAL</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="container topbar-inner">
-      <div>
-        <h1>Banco de Mociones BP</h1>
-        <p class="subtitle">Lectura organizada, infoslides y práctica anónima para Debate Parlamentario Británico</p>
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Banco de Mociones de Rhetor - UNAL</h1>
+          <p class="subtitle">Debate Parlamentario Británico · Práctica ciega, sorteador de cámaras y archivo organizado</p>
+        </div>
       </div>
       <button id="theme-toggle" class="btn btn-ghost" type="button" aria-label="Cambiar tema">
-        🌙 Modo oscuro
+        <span class="icon" id="theme-icon" aria-hidden="true"></span>
+        <span id="theme-label">Modo oscuro</span>
       </button>
     </div>
+
+    <nav class="container tabs-nav" role="tablist" aria-label="Secciones principales">
+      <button class="tab-btn active" type="button" role="tab" aria-selected="true" data-tab="tab-sorteador">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/>
+          <polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/>
+          <line x1="4" y1="4" x2="9" y2="9"/>
+        </svg>
+        <span>Sorteador de Mociones</span>
+      </button>
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="tab-posiciones">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <span>Sorteador de Posiciones</span>
+      </button>
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="tab-banco">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+        </svg>
+        <span>Banco de Mociones</span>
+      </button>
+    </nav>
   </header>
 
   <main class="container">
@@ -36,38 +68,88 @@
       </div>
       <div class="stat-card">
         <span class="stat-value" id="stat-traducidas">—</span>
-        <span class="stat-label">Traducidas (EN → ES)</span>
+        <span class="stat-label">En inglés (traducibles)</span>
       </div>
     </section>
 
-    <!-- Modo práctica aleatoria anónima -->
-    <section class="random-section card" aria-labelledby="random-title">
-      <div class="random-header">
-        <div>
-          <h2 id="random-title">🎲 Moción Aleatoria (Modo Anónimo)</h2>
-          <p class="muted">Practica sin saber de qué torneo o ronda proviene la moción hasta que decidas revelarlo.</p>
+    <!-- TAB 1: Sorteador de Mociones -->
+    <section id="tab-sorteador" class="tab-panel active" role="tabpanel">
+      <div class="card">
+        <div class="panel-header">
+          <div>
+            <h2>Sorteador de Mociones</h2>
+            <p class="muted">Si la moción incluye infoslide, se mostrará primero. La moción permanece oculta hasta que pulses “Revelar moción”.</p>
+          </div>
+          <div class="panel-actions">
+            <label class="checkbox-inline">
+              <input type="checkbox" id="random-use-filters" />
+              <span>Usar filtros del banco</span>
+            </label>
+            <button id="btn-random" class="btn btn-primary" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/>
+                <polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/>
+                <line x1="4" y1="4" x2="9" y2="9"/>
+              </svg>
+              <span>Sortear moción</span>
+            </button>
+          </div>
         </div>
-        <div class="random-actions">
-          <label class="checkbox-inline">
-            <input type="checkbox" id="random-use-filters" />
-            <span>Usar filtros activos</span>
-          </label>
-          <button id="btn-random" class="btn btn-primary" type="button">
-            🎲 Sortear moción
-          </button>
-        </div>
-      </div>
 
-      <div id="random-stage" class="random-stage empty">
-        <p class="muted">Haz clic en <strong>“Sortear moción”</strong> para comenzar una práctica anónima.</p>
+        <div id="random-stage" class="random-stage empty">
+          <p class="muted">Pulsa <strong>“Sortear moción”</strong> para iniciar una práctica.</p>
+        </div>
       </div>
     </section>
 
-    <!-- Filtros y explorador organizado -->
-    <section class="explorer-section" aria-labelledby="explorer-title">
+    <!-- TAB 2: Sorteador de Posiciones BP -->
+    <section id="tab-posiciones" class="tab-panel" role="tabpanel" hidden>
+      <div class="card">
+        <div class="panel-header">
+          <div>
+            <h2>Sorteador de Posiciones BP</h2>
+            <p class="muted">Inscribe los 4 equipos. Si marcas <strong>Iron-person</strong> en un equipo, el nombre del orador se duplicará automáticamente.</p>
+          </div>
+          <div class="panel-actions">
+            <button id="btn-clear-teams" class="btn btn-ghost" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+              </svg>
+              <span>Limpiar</span>
+            </button>
+            <button id="btn-draw-positions" class="btn btn-primary" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/>
+                <polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/>
+                <line x1="4" y1="4" x2="9" y2="9"/>
+              </svg>
+              <span>Sortear posiciones</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="teams-form-grid" class="teams-form-grid"></div>
+
+        <div id="positions-result" class="positions-result" hidden>
+          <div class="positions-result-head">
+            <h3>Resultado del sorteo</h3>
+            <button id="btn-copy-positions" class="btn btn-secondary" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              <span>Copiar sorteo</span>
+            </button>
+          </div>
+          <div id="chambers-grid" class="chambers-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: Banco de Mociones (Lectura Organizada) -->
+    <section id="tab-banco" class="tab-panel" role="tabpanel" hidden>
       <div class="section-head">
-        <h2 id="explorer-title">📚 Lectura Organizada</h2>
-        <span id="results-count" class="badge badge-neutral">0 resultados</span>
+        <h2>Lectura Organizada</h2>
+        <span id="results-count" class="badge badge-neutral">0 mociones</span>
       </div>
 
       <div class="filters card">
@@ -115,7 +197,7 @@
   <footer class="footer">
     <div class="container">
       <p>
-        Generado a partir de <code>Torneos BP.xlsx</code> · Última actualización:
+        Banco de Mociones de Rhetor - UNAL · Última actualización:
         <span id="generated-at">—</span>
       </p>
     </div>

@@ -1,49 +1,45 @@
-# Plan General — Banco de Mociones BP y Visualizador Web
+# Plan General — Banco de Mociones de Rhetor - UNAL
 
 ## 1. Objetivo
-Construir un flujo completo y mantenible para extraer mociones e infoslides de torneos de Debate Parlamentario Británico (BP) desde `Torneos BP.xlsx`, traducir al español el contenido en inglés y publicarlo en un visualizador web agradable en **GitHub Pages** orientado tanto a la lectura organizada como al entrenamiento ciego.
+Construir y mantener un banco de mociones e infoslides de Debate Parlamentario Británico (BP) para **Rhetor - UNAL**, con extracción automatizada desde `Torneos BP.xlsx`, traducción al español (`EN -> ES`), y una aplicación web profesional en **GitHub Pages** con navegación por pestañas (*Tabs*), práctica ciega de mociones y sorteador de posiciones BP.
 
-## 2. Arquitectura propuesta
+## 2. Reglas de diseño y código
+- **Cero emojis**: queda prohibido el uso de emojis en frontend, backend y documentación (ver `.agent/rules/no-emojis.md`).
+- **Iconografía profesional**: la interfaz web utiliza iconos vectoriales SVG (estilo Lucide) con trazo limpio y consistente.
+
+## 3. Arquitectura del sistema
 
 1. **Capa de datos (`extraer_mociones.py` + `Torneos BP.xlsx`)**
-   - Lectura de la hoja `"Banco de mociones"` (encabezado en fila 4, columnas `Torneo` y `Link de mociones`).
-   - Scraping tolerante a las dos variantes de Calicotab/Tabbycat (`/motions/statistics/` y `/motions/`).
-   - Separación limpia de:
-     - **Ronda** (ej. `Round 1`, `Octofinals`, `Grand Final`).
-     - **Moción** (limpia de barras de estadísticas y botones de modal).
-     - **Infoslide** (asociado directamente a su moción, excluyendo modales de idioma).
-   - Detección de idioma (`es` / `en`) y traducción automática `EN → ES` con caché persistente (`data/traducciones_cache.json`).
-   - Generación dual:
-     - `data/mociones.json` (fuente estructurada para el frontend).
-     - `banco_mociones_bp.txt` (respaldo legible en texto plano).
+   - Lectura de los **42 torneos** (incluyendo **CMUDE 2022–2026**, corrigiendo las rutas `/open/` para 2024–2026).
+   - Extracción limpia de **509 mociones** y **343 infoslides** hacia `data/mociones.json` y `banco_mociones_bp.txt`.
+   - Omisión automática de etiquetas de tema entre paréntesis (`<small>`) al final de las mociones.
+   - Traducción `EN -> ES` con múltiples motores (`bing`, `alibaba`, `reverso`, `GoogleTranslator`, `MyMemoryTranslator`) y caché persistente en `data/traducciones_cache.json`.
 
 2. **Capa de presentación (GitHub Pages en raíz `/`)**
-   - Frontend estático sin dependencias de build (`index.html`, `styles.css`, `app.js`).
-   - **Modo Moción Aleatoria Anónima**:
-     - Oculta por defecto torneo y ronda.
-     - Botón **“Revelar torneo y ronda”** con enlace directo a la fuente.
-     - Opción de sortear sobre todo el banco o sobre los filtros activos.
-   - **Lectura Organizada**:
-     - Agrupación por torneo y etiquetas de ronda.
-     - Buscador en tiempo real (moción, traducción e infoslide).
-     - Filtros por torneo, idioma y existencia de infoslide.
-     - Desplegable opcional para consultar el original en inglés cuando aplica.
-     - Modo claro/oscuro con preferencia guardada en `localStorage`.
+   - Navegación por **Tabs (ventanas internas)**:
+     1. **Sorteador de Mociones**:
+        - Muestra el **Infoslide** de inmediato cuando la moción cuenta con uno.
+        - Mantiene **oculta la moción** hasta que el usuario pulsa **“Revelar moción”**.
+        - Mantiene **ocultos torneo y ronda** hasta que el usuario pulsa **“Revelar torneo y ronda”**.
+     2. **Sorteador de Posiciones**:
+        - Registro de **4 equipos** (Orador 1 y Orador 2).
+        - Opción **Iron-person** por equipo: al marcarla, duplica automáticamente el nombre del orador en la segunda posición y lo mantiene sincronizado.
+        - Sorteo aleatorio (Fisher-Yates) de las 4 cámaras BP: **Alta de Gobierno**, **Alta de Oposición**, **Baja de Gobierno** y **Baja de Oposición**, presentado en rejilla de debate y con botón para copiar el resultado.
+     3. **Banco de Mociones (Lectura Organizada)**:
+        - Agrupación por torneo y ronda.
+        - Buscador en tiempo real y filtros por torneo, idioma y presencia de infoslide.
+        - Desplegable opcional para consultar el original en inglés.
+   - Selector de tema **Claro / Oscuro** y tipografía editorial profesional.
 
 3. **Capa de gestión (`gestion/`)**
-   - `gestion/planes/`: planes de evolución, mejoras y roadmap.
-   - `gestion/auditorias/`: auditorías de enlaces caídos (404), calidad de traducciones y cobertura de infoslides.
+   - `gestion/planes/`: planificación y evolución del proyecto.
+   - `gestion/auditorias/`: auditorías técnicas de fuentes y calidad de datos.
 
-## 3. Fases de ejecución
+## 4. Estado de fases
 
 | Fase | Alcance | Estado |
 | :--- | :--- | :--- |
-| **Fase 1: Extracción base** | Corrección de lectura de `Torneos BP.xlsx`, eliminación de dependencia Colab, script `.bat` y salida `.txt`. | Completada |
-| **Fase 2: Limpieza, Infoslides y Traducción** | Extracción estructurada a JSON, limpieza de estadísticas incrustadas y traducción `EN → ES` con caché. | En ejecución / Verificación |
-| **Fase 3: Frontend GitHub Pages** | Visualizador web con lectura organizada, modo aleatorio anónimo y revelación de torneo/ronda. | Implementado |
-| **Fase 4: Publicación y QA** | Verificación de `data/mociones.json`, auditoría de enlaces y `push` a `main` para GitHub Pages. | Pendiente de push final |
-
-## 4. Mejoras futuras sugeridas
-- **Etiquetado temático**: clasificar mociones por tema (Economía, RR.II., Política, Filosofía, etc.) para filtrar en práctica.
-- **Temporizador de preparación BP (15 minutos)** integrado dentro del modo de moción aleatoria.
-- **Revisión manual de traducciones** en `data/traducciones_cache.json` para afinar términos técnicos de debate (ej. *THW*, *THBT*, *THR*).
+| **Fase 1: Extracción base** | Lectura de `Torneos BP.xlsx`, script local y `.bat`. | Completada |
+| **Fase 2: Limpieza, CMUDE 2024–2026 y Traducción** | 42/42 torneos (509 mociones, 343 infoslides), sin etiquetas de tema y traducción con caché. | Completada |
+| **Fase 3: UI/UX Profesional con Tabs y Sorteadores** | Nombre oficial Rhetor - UNAL, cero emojis, iconos SVG, Tabs, ocultamiento de moción previa revelación y sorteador de posiciones con Iron-person. | Completada |
+| **Fase 4: Publicación en GitHub Pages** | Commit y push a `main` y verificación en producción. | Siguiente paso |

@@ -1,13 +1,25 @@
+const ICONS = {
+  moon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`,
+  sun: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`,
+  eye: `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  lock: `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+  unlock: `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>`,
+  ext: `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`,
+};
+
 const state = {
   data: null,
   filtered: [],
   randomMotion: null,
-  showRandomInfoslide: false,
-  revealed: false,
+  motionRevealed: false,
+  metaRevealed: false,
+  lastDrawText: "",
 };
 
 const els = {
   themeToggle: document.getElementById("theme-toggle"),
+  themeIcon: document.getElementById("theme-icon"),
+  themeLabel: document.getElementById("theme-label"),
   statTotal: document.getElementById("stat-total"),
   statTorneos: document.getElementById("stat-torneos"),
   statInfoslides: document.getElementById("stat-infoslides"),
@@ -16,6 +28,12 @@ const els = {
   btnRandom: document.getElementById("btn-random"),
   randomUseFilters: document.getElementById("random-use-filters"),
   randomStage: document.getElementById("random-stage"),
+  teamsFormGrid: document.getElementById("teams-form-grid"),
+  btnDrawPositions: document.getElementById("btn-draw-positions"),
+  btnClearTeams: document.getElementById("btn-clear-teams"),
+  positionsResult: document.getElementById("positions-result"),
+  chambersGrid: document.getElementById("chambers-grid"),
+  btnCopyPositions: document.getElementById("btn-copy-positions"),
   filterText: document.getElementById("filter-text"),
   filterTorneo: document.getElementById("filter-torneo"),
   filterIdioma: document.getElementById("filter-idioma"),
@@ -36,23 +54,48 @@ function escapeHtml(str) {
 }
 
 function initTheme() {
+  const apply = (theme) => {
+    document.documentElement.setAttribute("data-theme", theme);
+    els.themeIcon.innerHTML = theme === "dark" ? ICONS.sun : ICONS.moon;
+    els.themeLabel.textContent = theme === "dark" ? "Modo claro" : "Modo oscuro";
+  };
   const saved = localStorage.getItem("bp-theme") || "light";
-  document.documentElement.setAttribute("data-theme", saved);
-  els.themeToggle.textContent = saved === "dark" ? "☀️ Modo claro" : "🌙 Modo oscuro";
+  apply(saved);
 
   els.themeToggle.addEventListener("click", () => {
     const current = document.documentElement.getAttribute("data-theme");
     const next = current === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("bp-theme", next);
-    els.themeToggle.textContent = next === "dark" ? "☀️ Modo claro" : "🌙 Modo oscuro";
+    apply(next);
+  });
+}
+
+function initTabs() {
+  const buttons = document.querySelectorAll(".tab-btn");
+  const panels = document.querySelectorAll(".tab-panel");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.dataset.tab;
+      buttons.forEach((b) => {
+        const active = b === btn;
+        b.classList.toggle("active", active);
+        b.setAttribute("aria-selected", String(active));
+      });
+      panels.forEach((p) => {
+        const active = p.id === targetId;
+        p.classList.toggle("active", active);
+        p.hidden = !active;
+      });
+    });
   });
 }
 
 function renderInfoslideHtml(m) {
   if (!m.tiene_infoslide) return "";
   const textoEs = m.infoslide_es || m.infoslide;
-  const tieneOriginal = m.idioma === "en" && m.infoslide && m.infoslide_es && m.infoslide !== m.infoslide_es;
+  const tieneOriginal =
+    m.idioma === "en" && m.infoslide && m.infoslide_es && m.infoslide !== m.infoslide_es;
 
   return `
     <div class="infoslide-box">
@@ -74,7 +117,7 @@ function renderRandomStage() {
   const m = state.randomMotion;
   if (!m) {
     els.randomStage.className = "random-stage empty";
-    els.randomStage.innerHTML = `<p class="muted">Haz clic en <strong>“Sortear moción”</strong> para comenzar una práctica anónima.</p>`;
+    els.randomStage.innerHTML = `<p class="muted">Pulsa <strong>“Sortear moción”</strong> para iniciar una práctica.</p>`;
     return;
   }
 
@@ -86,67 +129,74 @@ function renderRandomStage() {
     <div class="random-meta-bar">
       <div class="motion-badges">
         ${
-          state.revealed
-            ? `<span class="badge badge-accent">🔓 Revelado</span>`
-            : `<span class="badge badge-warn">🔒 Torneo y ronda ocultos</span>`
+          state.metaRevealed
+            ? `<span class="badge badge-accent">${ICONS.unlock} Torneo y ronda revelados</span>`
+            : `<span class="badge badge-warn">${ICONS.lock} Torneo y ronda ocultos</span>`
         }
-        ${m.tiene_infoslide ? `<span class="badge badge-info">📄 Con Infoslide</span>` : ""}
-        ${esIngles ? `<span class="badge badge-neutral">🌐 EN → ES</span>` : `<span class="badge badge-neutral">🇪🇸 ES</span>`}
+        ${m.tiene_infoslide ? `<span class="badge badge-info">Con Infoslide</span>` : `<span class="badge badge-neutral">Sin Infoslide</span>`}
+        ${esIngles ? `<span class="badge badge-neutral">EN -> ES</span>` : `<span class="badge badge-neutral">ES</span>`}
       </div>
       <div class="random-stage-buttons">
         ${
-          m.tiene_infoslide
-            ? `<button id="btn-toggle-infoslide" class="btn btn-ghost" type="button">
-                 ${state.showRandomInfoslide ? "📄 Ocultar Infoslide" : "📄 Ver Infoslide"}
-               </button>`
-            : ""
-        }
-        ${
-          state.revealed
+          state.metaRevealed
             ? ""
-            : `<button id="btn-reveal" class="btn btn-secondary" type="button">👁️ Revelar torneo y ronda</button>`
+            : `<button id="btn-reveal-meta" class="btn btn-secondary" type="button">${ICONS.eye} <span>Revelar torneo y ronda</span></button>`
         }
       </div>
     </div>
 
-    ${state.showRandomInfoslide ? renderInfoslideHtml(m) : ""}
-
-    <p class="random-motion-text">${escapeHtml(textoPrincipal)}</p>
+    ${m.tiene_infoslide ? renderInfoslideHtml(m) : ""}
 
     ${
-      esIngles && m.mocion !== textoPrincipal
-        ? `<details class="original-en">
-             <summary>Ver moción original en inglés</summary>
-             <p>${escapeHtml(m.mocion)}</p>
-           </details>`
-        : ""
+      state.motionRevealed
+        ? `<p class="random-motion-text">${escapeHtml(textoPrincipal)}</p>
+           ${
+             esIngles && m.mocion !== textoPrincipal
+               ? `<details class="original-en">
+                    <summary>Ver moción original en inglés</summary>
+                    <p>${escapeHtml(m.mocion)}</p>
+                  </details>`
+               : ""
+           }`
+        : `<div class="motion-hidden-box">
+             <p>${
+               m.tiene_infoslide
+                 ? "Moción oculta. Lee el infoslide y pulsa el botón para revelar la moción."
+                 : "Moción oculta. Pulsa el botón cuando estés listo para revelarla."
+             }</p>
+             <button id="btn-reveal-motion" class="btn btn-primary" type="button">
+               ${ICONS.eye} <span>Revelar moción</span>
+             </button>
+           </div>`
     }
 
     ${
-      state.revealed
+      state.metaRevealed
         ? `<div class="revealed-box">
              <div>
                <strong>Torneo:</strong> ${escapeHtml(m.torneo)} &nbsp;·&nbsp;
                <strong>Ronda:</strong> ${escapeHtml(m.ronda)}
              </div>
-             <a href="${escapeHtml(m.url)}" target="_blank" rel="noopener noreferrer">Ver en Calicotab ↗</a>
+             <a href="${escapeHtml(m.url)}" target="_blank" rel="noopener noreferrer">
+               <span>Ver en Calicotab</span> ${ICONS.ext}
+             </a>
            </div>`
         : ""
     }
   `;
 
-  const btnToggleInfo = document.getElementById("btn-toggle-infoslide");
-  if (btnToggleInfo) {
-    btnToggleInfo.addEventListener("click", () => {
-      state.showRandomInfoslide = !state.showRandomInfoslide;
+  const btnRevealMotion = document.getElementById("btn-reveal-motion");
+  if (btnRevealMotion) {
+    btnRevealMotion.addEventListener("click", () => {
+      state.motionRevealed = true;
       renderRandomStage();
     });
   }
 
-  const btnReveal = document.getElementById("btn-reveal");
-  if (btnReveal) {
-    btnReveal.addEventListener("click", () => {
-      state.revealed = true;
+  const btnRevealMeta = document.getElementById("btn-reveal-meta");
+  if (btnRevealMeta) {
+    btnRevealMeta.addEventListener("click", () => {
+      state.metaRevealed = true;
       renderRandomStage();
     });
   }
@@ -162,11 +212,132 @@ function pickRandomMotion() {
   if (!pool.length) return;
   const idx = Math.floor(Math.random() * pool.length);
   state.randomMotion = pool[idx];
-  state.showRandomInfoslide = Boolean(pool[idx].tiene_infoslide);
-  state.revealed = false;
+  state.motionRevealed = false;
+  state.metaRevealed = false;
   renderRandomStage();
 }
 
+/* Sorteador de Posiciones BP */
+function initPositionDrawer() {
+  const slotsHtml = [1, 2, 3, 4]
+    .map(
+      (n) => `
+      <div class="team-slot" data-slot="${n}">
+        <div class="team-slot-head">
+          <span class="team-slot-title">Equipo ${n}</span>
+          <label class="iron-toggle">
+            <input type="checkbox" class="iron-check" data-slot="${n}" />
+            <span>Iron-person</span>
+          </label>
+        </div>
+        <div class="speaker-fields">
+          <input type="text" class="sp1" data-slot="${n}" placeholder="Orador 1" />
+          <input type="text" class="sp2" data-slot="${n}" placeholder="Orador 2" />
+        </div>
+      </div>
+    `
+    )
+    .join("");
+
+  els.teamsFormGrid.innerHTML = slotsHtml;
+
+  els.teamsFormGrid.querySelectorAll(".iron-check").forEach((chk) => {
+    chk.addEventListener("change", (e) => {
+      const slot = e.target.dataset.slot;
+      const sp1 = els.teamsFormGrid.querySelector(`.sp1[data-slot="${slot}"]`);
+      const sp2 = els.teamsFormGrid.querySelector(`.sp2[data-slot="${slot}"]`);
+      if (e.target.checked) {
+        sp2.value = sp1.value;
+        sp2.disabled = true;
+      } else {
+        sp2.disabled = false;
+      }
+    });
+  });
+
+  els.teamsFormGrid.querySelectorAll(".sp1").forEach((inp) => {
+    inp.addEventListener("input", (e) => {
+      const slot = e.target.dataset.slot;
+      const chk = els.teamsFormGrid.querySelector(`.iron-check[data-slot="${slot}"]`);
+      const sp2 = els.teamsFormGrid.querySelector(`.sp2[data-slot="${slot}"]`);
+      if (chk.checked) {
+        sp2.value = e.target.value;
+      }
+    });
+  });
+
+  els.btnClearTeams.addEventListener("click", () => {
+    els.teamsFormGrid.querySelectorAll("input[type='text']").forEach((i) => {
+      i.value = "";
+      i.disabled = false;
+    });
+    els.teamsFormGrid.querySelectorAll(".iron-check").forEach((c) => {
+      c.checked = false;
+    });
+    els.positionsResult.hidden = true;
+  });
+
+  els.btnDrawPositions.addEventListener("click", () => {
+    const teams = [1, 2, 3, 4].map((n) => {
+      const sp1 = els.teamsFormGrid.querySelector(`.sp1[data-slot="${n}"]`).value.trim();
+      const sp2 = els.teamsFormGrid.querySelector(`.sp2[data-slot="${n}"]`).value.trim();
+      const iron = els.teamsFormGrid.querySelector(`.iron-check[data-slot="${n}"]`).checked;
+      const nombre1 = sp1 || `Equipo ${n}`;
+      const nombre2 = iron ? nombre1 : sp2;
+      const label = nombre2 ? `${nombre1} / ${nombre2}` : nombre1;
+      return { label, iron };
+    });
+
+    // Fisher-Yates shuffle
+    for (let i = teams.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [teams[i], teams[j]] = [teams[j], teams[i]];
+    }
+
+    const camaras = [
+      { nombre: "Alta de Gobierno (AG)", tipo: "gov", team: teams[0] },
+      { nombre: "Alta de Oposición (AO)", tipo: "opp", team: teams[1] },
+      { nombre: "Baja de Gobierno (BG)", tipo: "gov", team: teams[2] },
+      { nombre: "Baja de Oposición (BO)", tipo: "opp", team: teams[3] },
+    ];
+
+    els.chambersGrid.innerHTML = camaras
+      .map(
+        (c) => `
+        <div class="chamber-card ${c.tipo}">
+          <div class="chamber-label">${escapeHtml(c.nombre)}</div>
+          <div class="chamber-speakers">
+            ${escapeHtml(c.team.label)}
+            ${c.team.iron ? `<span class="badge badge-info">Iron-person</span>` : ""}
+          </div>
+        </div>
+      `
+      )
+      .join("");
+
+    state.lastDrawText = camaras
+      .map((c) => `${c.nombre}: ${c.team.label}${c.team.iron ? " (Iron-person)" : ""}`)
+      .join("\n");
+
+    els.positionsResult.hidden = false;
+  });
+
+  els.btnCopyPositions.addEventListener("click", async () => {
+    if (!state.lastDrawText) return;
+    try {
+      await navigator.clipboard.writeText(state.lastDrawText);
+      const span = els.btnCopyPositions.querySelector("span");
+      span.textContent = "Copiado";
+      setTimeout(() => {
+        span.textContent = "Copiar sorteo";
+      }, 1800);
+    } catch {
+      // Ignorar si el navegador bloquea el portapapeles
+    }
+  });
+}
+
+/* Banco de Mociones */
 function applyFilters() {
   if (!state.data) return;
   const q = els.filterText.value.trim().toLowerCase();
@@ -201,7 +372,6 @@ function renderMotionsList() {
     return;
   }
 
-  // Agrupar por torneo preservando el orden
   const grupos = new Map();
   for (const m of list) {
     if (!grupos.has(m.torneo)) {
@@ -221,8 +391,8 @@ function renderMotionsList() {
             <div class="motion-top">
               <div class="motion-badges">
                 <span class="badge badge-neutral">${escapeHtml(m.ronda)}</span>
-                ${m.tiene_infoslide ? `<span class="badge badge-info">📄 Infoslide</span>` : ""}
-                ${esIngles ? `<span class="badge badge-neutral">🌐 EN → ES</span>` : `<span class="badge badge-neutral">🇪🇸 ES</span>`}
+                ${m.tiene_infoslide ? `<span class="badge badge-info">Infoslide</span>` : ""}
+                ${esIngles ? `<span class="badge badge-neutral">EN -> ES</span>` : `<span class="badge badge-neutral">ES</span>`}
               </div>
             </div>
             <p class="motion-text">${escapeHtml(textoPrincipal)}</p>
@@ -244,7 +414,9 @@ function renderMotionsList() {
       <section class="tournament-block">
         <div class="tournament-header">
           <h3>${escapeHtml(torneo)} <span class="badge badge-neutral">${grupo.items.length}</span></h3>
-          <a href="${escapeHtml(grupo.url)}" target="_blank" rel="noopener noreferrer">Fuente Calicotab ↗</a>
+          <a href="${escapeHtml(grupo.url)}" target="_blank" rel="noopener noreferrer">
+            <span>Fuente Calicotab</span> ${ICONS.ext}
+          </a>
         </div>
         <div class="motion-list">${cardsHtml}</div>
       </section>
@@ -256,6 +428,8 @@ function renderMotionsList() {
 
 async function init() {
   initTheme();
+  initTabs();
+  initPositionDrawer();
 
   try {
     const res = await fetch("data/mociones.json");
