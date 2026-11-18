@@ -27,8 +27,8 @@ const els = {
   generatedAt: document.getElementById("generated-at"),
   btnRandom: document.getElementById("btn-random"),
   randomPoolCount: document.getElementById("random-pool-count"),
-  randomFilterTorneo: document.getElementById("random-filter-torneo"),
-  randomFilterIdioma: document.getElementById("random-filter-idioma"),
+  randomFilterTema: document.getElementById("random-filter-tema"),
+  randomFilterTipo: document.getElementById("random-filter-tipo"),
   randomFilterInfoslide: document.getElementById("random-filter-infoslide"),
   btnClearRandomFilters: document.getElementById("btn-clear-random-filters"),
   randomStage: document.getElementById("random-stage"),
@@ -204,13 +204,13 @@ function renderRandomStage() {
 
 function getRandomPool() {
   if (!state.data) return [];
-  const torneo = els.randomFilterTorneo.value;
-  const idioma = els.randomFilterIdioma.value;
+  const tema = els.randomFilterTema.value;
+  const tipo = els.randomFilterTipo.value;
   const infoslide = els.randomFilterInfoslide.value;
 
   return state.data.mociones.filter((m) => {
-    if (torneo && m.torneo !== torneo) return false;
-    if (idioma && m.idioma !== idioma) return false;
+    if (tema && m.tema !== tema) return false;
+    if (tipo && m.tipo_mocion !== tipo) return false;
     if (infoslide === "con" && !m.tiene_infoslide) return false;
     if (infoslide === "sin" && m.tiene_infoslide) return false;
     return true;
@@ -480,11 +480,22 @@ async function init() {
       opt1.value = t;
       opt1.textContent = t;
       els.filterTorneo.appendChild(opt1);
+    }
 
-      const opt2 = document.createElement("option");
-      opt2.value = t;
-      opt2.textContent = t;
-      els.randomFilterTorneo.appendChild(opt2);
+    const temas = [...new Set(data.mociones.map((m) => m.tema).filter(Boolean))].sort();
+    for (const tema of temas) {
+      const opt = document.createElement("option");
+      opt.value = tema;
+      opt.textContent = tema;
+      els.randomFilterTema.appendChild(opt);
+    }
+
+    const tipos = [...new Set(data.mociones.map((m) => m.tipo_mocion).filter(Boolean))].sort();
+    for (const tipo of tipos) {
+      const opt = document.createElement("option");
+      opt.value = tipo;
+      opt.textContent = tipo;
+      els.randomFilterTipo.appendChild(opt);
     }
 
     updateRandomPoolCount();
@@ -500,12 +511,12 @@ async function init() {
   }
 
   els.btnRandom.addEventListener("click", pickRandomMotion);
-  els.randomFilterTorneo.addEventListener("change", updateRandomPoolCount);
-  els.randomFilterIdioma.addEventListener("change", updateRandomPoolCount);
+  els.randomFilterTema.addEventListener("change", updateRandomPoolCount);
+  els.randomFilterTipo.addEventListener("change", updateRandomPoolCount);
   els.randomFilterInfoslide.addEventListener("change", updateRandomPoolCount);
   els.btnClearRandomFilters.addEventListener("click", () => {
-    els.randomFilterTorneo.value = "";
-    els.randomFilterIdioma.value = "";
+    els.randomFilterTema.value = "";
+    els.randomFilterTipo.value = "";
     els.randomFilterInfoslide.value = "";
     updateRandomPoolCount();
   });

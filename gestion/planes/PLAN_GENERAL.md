@@ -19,7 +19,7 @@ Construir y mantener un banco de mociones e infoslides de Debate Parlamentario B
 2. **Capa de presentación (GitHub Pages en raíz `/`)**
    - Navegación por **Tabs (ventanas internas)**:
      1. **Sorteador de Mociones**:
-        - Cuenta con filtros propios independientes (`Torneo`, `Idioma`, `Infoslide` y contador de mociones disponibles).
+        - Cuenta con filtros propios independientes según **Tema** (Economía y Trabajo, Política y Estado, Relaciones Internacionales, Tecnología e IA, Sociedad y Derechos, Educación y Salud, Medioambiente, General), **Tipo de moción** (Política/Acción, Valor/Creencia, Preferencia, Lamento/Oposición, Apoyo, Otro) y **presencia de Infoslide**, con contador de mociones disponibles.
         - Muestra el **Infoslide** de inmediato cuando la moción cuenta con uno.
         - Mantiene **oculta la moción** hasta que el usuario pulsa **“Revelar moción”**.
         - Mantiene **ocultos torneo y ronda** hasta que el usuario pulsa **“Revelar torneo y ronda”**.
