@@ -1,10 +1,10 @@
 const ICONS = {
-  moon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`,
-  sun: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`,
-  eye: `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
-  lock: `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
-  unlock: `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>`,
-  ext: `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`,
+  moon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`,
+  sun: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
+  eye: `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  lock: `<svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+  unlock: `<svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>`,
+  ext: `<svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>`,
 };
 
 const state = {
@@ -115,11 +115,7 @@ function renderInfoslideHtml(m) {
 
 function renderRandomStage() {
   const m = state.randomMotion;
-  if (!m) {
-    els.randomStage.className = "random-stage empty";
-    els.randomStage.innerHTML = `<p class="muted">Pulsa <strong>“Sortear moción”</strong> para iniciar una práctica.</p>`;
-    return;
-  }
+  if (!m) return;
 
   els.randomStage.className = "random-stage active";
   const textoPrincipal = m.mocion_es || m.mocion;
@@ -136,11 +132,11 @@ function renderRandomStage() {
         ${m.tiene_infoslide ? `<span class="badge badge-info">Con Infoslide</span>` : `<span class="badge badge-neutral">Sin Infoslide</span>`}
         ${esIngles ? `<span class="badge badge-neutral">EN -> ES</span>` : `<span class="badge badge-neutral">ES</span>`}
       </div>
-      <div class="random-stage-buttons">
+      <div>
         ${
           state.metaRevealed
             ? ""
-            : `<button id="btn-reveal-meta" class="btn btn-secondary" type="button">${ICONS.eye} <span>Revelar torneo y ronda</span></button>`
+            : `<button id="btn-reveal-meta" class="btn btn-secondary btn-sm" type="button">${ICONS.eye} <span>Revelar torneo y ronda</span></button>`
         }
       </div>
     </div>
@@ -224,7 +220,10 @@ function initPositionDrawer() {
       (n) => `
       <div class="team-slot" data-slot="${n}">
         <div class="team-slot-head">
-          <span class="team-slot-title">Equipo ${n}</span>
+          <span class="team-slot-title">
+            <span class="team-num">${n}</span>
+            <span>Equipo ${n}</span>
+          </span>
           <label class="iron-toggle">
             <input type="checkbox" class="iron-check" data-slot="${n}" />
             <span>Iron-person</span>
@@ -288,34 +287,45 @@ function initPositionDrawer() {
       return { label, iron };
     });
 
-    // Fisher-Yates shuffle
     for (let i = teams.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [teams[i], teams[j]] = [teams[j], teams[i]];
     }
 
-    const camaras = [
-      { nombre: "Alta de Gobierno (AG)", tipo: "gov", team: teams[0] },
-      { nombre: "Alta de Oposición (AO)", tipo: "opp", team: teams[1] },
-      { nombre: "Baja de Gobierno (BG)", tipo: "gov", team: teams[2] },
-      { nombre: "Baja de Oposición (BO)", tipo: "opp", team: teams[3] },
+    const gov = [
+      { nombre: "Alta de Gobierno (AG)", team: teams[0] },
+      { nombre: "Baja de Gobierno (BG)", team: teams[2] },
+    ];
+    const opp = [
+      { nombre: "Alta de Oposición (AO)", team: teams[1] },
+      { nombre: "Baja de Oposición (BO)", team: teams[3] },
     ];
 
-    els.chambersGrid.innerHTML = camaras
-      .map(
-        (c) => `
-        <div class="chamber-card ${c.tipo}">
-          <div class="chamber-label">${escapeHtml(c.nombre)}</div>
-          <div class="chamber-speakers">
-            ${escapeHtml(c.team.label)}
-            ${c.team.iron ? `<span class="badge badge-info">Iron-person</span>` : ""}
-          </div>
-        </div>
-      `
-      )
-      .join("");
+    const renderBench = (title, tipo, list) => `
+      <div class="bench-column">
+        <div class="bench-title">${title}</div>
+        ${list
+          .map(
+            (c) => `
+            <div class="chamber-card ${tipo}">
+              <div class="chamber-label">${escapeHtml(c.nombre)}</div>
+              <div class="chamber-speakers">
+                <span>${escapeHtml(c.team.label)}</span>
+                ${c.team.iron ? `<span class="badge badge-info">Iron-person</span>` : ""}
+              </div>
+            </div>
+          `
+          )
+          .join("")}
+      </div>
+    `;
 
-    state.lastDrawText = camaras
+    els.chambersGrid.innerHTML =
+      renderBench("Bancada de Gobierno", "gov", gov) +
+      renderBench("Bancada de Oposición", "opp", opp);
+
+    const ordenLogico = [gov[0], opp[0], gov[1], opp[1]];
+    state.lastDrawText = ordenLogico
       .map((c) => `${c.nombre}: ${c.team.label}${c.team.iron ? " (Iron-person)" : ""}`)
       .join("\n");
 
