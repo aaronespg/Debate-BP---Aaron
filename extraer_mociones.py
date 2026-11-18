@@ -5,6 +5,7 @@ import time
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+import translators as ts
 from deep_translator import GoogleTranslator, MyMemoryTranslator
 
 EXCEL_PATH = "Torneos BP.xlsx"
@@ -77,18 +78,32 @@ def dividir_en_fragmentos(texto, max_len=450):
     return fragmentos
 
 
-_google_disponible = True
+_motores_bloqueados = set()
 
 
 def traducir_a_es(texto, translator, cache, fallback_translator=None):
-    global _google_disponible
     if not texto:
         return None
     if texto in cache:
         return cache[texto]
 
-    # Intentar primero con GoogleTranslator (se desactiva en esta ejecución si bloquea por rate-limit)
-    if _google_disponible:
+    # 1. Motores rápidos de la librería translators (Bing, Alibaba, Reverso)
+    for motor in ("bing", "alibaba", "reverso"):
+        if motor in _motores_bloqueados:
+            continue
+        try:
+            trad = ts.translate_text(
+                texto, translator=motor, from_language="en", to_language="es"
+            )
+            if trad:
+                cache[texto] = trad
+                time.sleep(0.15)
+                return trad
+        except Exception:
+            _motores_bloqueados.add(motor)
+
+    # 2. Respaldo con GoogleTranslator
+    if "google" not in _motores_bloqueados:
         try:
             if len(texto) <= 4500:
                 trad = translator.translate(texto)
@@ -99,10 +114,10 @@ def traducir_a_es(texto, translator, cache, fallback_translator=None):
             time.sleep(0.35)
             return trad
         except Exception:
-            _google_disponible = False
+            _motores_bloqueados.add("google")
 
-    # Respaldo con MyMemoryTranslator (límite ~500 caracteres por petición)
-    if fallback_translator is not None:
+    # 3. Respaldo con MyMemoryTranslator (límite ~500 caracteres por petición)
+    if fallback_translator is not None and "mymemory" not in _motores_bloqueados:
         try:
             partes = dividir_en_fragmentos(texto, 450)
             trad = " ".join(fallback_translator.translate(p) for p in partes)
@@ -110,6 +125,7 @@ def traducir_a_es(texto, translator, cache, fallback_translator=None):
             time.sleep(0.15)
             return trad
         except Exception as e:
+            _motores_bloqueados.add("mymemory")
             print(f"  [Aviso] No se pudo traducir: {e}", flush=True)
 
     return None
@@ -140,11 +156,11 @@ def extraer_mociones_de_html(html, torneo, url):
         # Extraer primero h4/.lead antes de limpiar contenedores de estadísticas (.row, table)
         objetivo = b.select_one("h4, .lead")
         if objetivo is not None:
-            for extra in objetivo.select(".modal, [data-toggle='modal']"):
+            for extra in objetivo.select(".modal, [data-toggle='modal'], small"):
                 extra.decompose()
             texto = limpiar_texto(objetivo)
         else:
-            for extra in b.select(".modal, [data-toggle='modal'], .row, table, .progress"):
+            for extra in b.select(".modal, [data-toggle='modal'], .row, table, .progress, small"):
                 extra.decompose()
             texto = limpiar_texto(b)
 

@@ -2,6 +2,7 @@ const state = {
   data: null,
   filtered: [],
   randomMotion: null,
+  showRandomInfoslide: false,
   revealed: false,
 };
 
@@ -92,11 +93,20 @@ function renderRandomStage() {
         ${m.tiene_infoslide ? `<span class="badge badge-info">📄 Con Infoslide</span>` : ""}
         ${esIngles ? `<span class="badge badge-neutral">🌐 EN → ES</span>` : `<span class="badge badge-neutral">🇪🇸 ES</span>`}
       </div>
-      ${
-        state.revealed
-          ? ""
-          : `<button id="btn-reveal" class="btn btn-secondary" type="button">👁️ Revelar torneo y ronda</button>`
-      }
+      <div class="random-stage-buttons">
+        ${
+          m.tiene_infoslide
+            ? `<button id="btn-toggle-infoslide" class="btn btn-ghost" type="button">
+                 ${state.showRandomInfoslide ? "📄 Ocultar Infoslide" : "📄 Ver Infoslide"}
+               </button>`
+            : ""
+        }
+        ${
+          state.revealed
+            ? ""
+            : `<button id="btn-reveal" class="btn btn-secondary" type="button">👁️ Revelar torneo y ronda</button>`
+        }
+      </div>
     </div>
 
     <p class="random-motion-text">${escapeHtml(textoPrincipal)}</p>
@@ -110,7 +120,7 @@ function renderRandomStage() {
         : ""
     }
 
-    ${renderInfoslideHtml(m)}
+    ${state.showRandomInfoslide ? renderInfoslideHtml(m) : ""}
 
     ${
       state.revealed
@@ -124,6 +134,14 @@ function renderRandomStage() {
         : ""
     }
   `;
+
+  const btnToggleInfo = document.getElementById("btn-toggle-infoslide");
+  if (btnToggleInfo) {
+    btnToggleInfo.addEventListener("click", () => {
+      state.showRandomInfoslide = !state.showRandomInfoslide;
+      renderRandomStage();
+    });
+  }
 
   const btnReveal = document.getElementById("btn-reveal");
   if (btnReveal) {
@@ -144,6 +162,7 @@ function pickRandomMotion() {
   if (!pool.length) return;
   const idx = Math.floor(Math.random() * pool.length);
   state.randomMotion = pool[idx];
+  state.showRandomInfoslide = false;
   state.revealed = false;
   renderRandomStage();
 }
