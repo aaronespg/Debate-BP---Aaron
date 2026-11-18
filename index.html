@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banco de Mociones BP | Debate Parlamentario Británico</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div>
+        <h1>Banco de Mociones BP</h1>
+        <p class="subtitle">Lectura organizada, infoslides y práctica anónima para Debate Parlamentario Británico</p>
+      </div>
+      <button id="theme-toggle" class="btn btn-ghost" type="button" aria-label="Cambiar tema">
+        🌙 Modo oscuro
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Resumen estadístico -->
+    <section class="stats-grid" aria-label="Estadísticas del banco">
+      <div class="stat-card">
+        <span class="stat-value" id="stat-total">—</span>
+        <span class="stat-label">Mociones</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-torneos">—</span>
+        <span class="stat-label">Torneos</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-infoslides">—</span>
+        <span class="stat-label">Con Infoslide</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-traducidas">—</span>
+        <span class="stat-label">Traducidas (EN → ES)</span>
+      </div>
+    </section>
+
+    <!-- Modo práctica aleatoria anónima -->
+    <section class="random-section card" aria-labelledby="random-title">
+      <div class="random-header">
+        <div>
+          <h2 id="random-title">🎲 Moción Aleatoria (Modo Anónimo)</h2>
+          <p class="muted">Practica sin saber de qué torneo o ronda proviene la moción hasta que decidas revelarlo.</p>
+        </div>
+        <div class="random-actions">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="random-use-filters" />
+            <span>Usar filtros activos</span>
+          </label>
+          <button id="btn-random" class="btn btn-primary" type="button">
+            🎲 Sortear moción
+          </button>
+        </div>
+      </div>
+
+      <div id="random-stage" class="random-stage empty">
+        <p class="muted">Haz clic en <strong>“Sortear moción”</strong> para comenzar una práctica anónima.</p>
+      </div>
+    </section>
+
+    <!-- Filtros y explorador organizado -->
+    <section class="explorer-section" aria-labelledby="explorer-title">
+      <div class="section-head">
+        <h2 id="explorer-title">📚 Lectura Organizada</h2>
+        <span id="results-count" class="badge badge-neutral">0 resultados</span>
+      </div>
+
+      <div class="filters card">
+        <div class="filter-group filter-search">
+          <label for="filter-text">Buscar moción o infoslide</label>
+          <input id="filter-text" type="search" placeholder="Ej. educación, democracia, IA, BRICS..." />
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-torneo">Torneo</label>
+          <select id="filter-torneo">
+            <option value="">Todos los torneos</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-idioma">Idioma</label>
+          <select id="filter-idioma">
+            <option value="">Todos</option>
+            <option value="es">Español (original)</option>
+            <option value="en">Inglés (traducido al español)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-infoslide">Infoslide</label>
+          <select id="filter-infoslide">
+            <option value="">Todas</option>
+            <option value="con">Solo con infoslide</option>
+            <option value="sin">Sin infoslide</option>
+          </select>
+        </div>
+
+        <div class="filter-actions">
+          <button id="btn-clear-filters" class="btn btn-ghost" type="button">Limpiar</button>
+        </div>
+      </div>
+
+      <div id="motions-container" class="motions-container">
+        <div class="loading">Cargando banco de mociones...</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>
+        Generado a partir de <code>Torneos BP.xlsx</code> · Última actualización:
+        <span id="generated-at">—</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
