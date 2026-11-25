@@ -2596,6 +2596,7 @@
 - **Idioma original:** EN
 - **Moción (ES):** La prohibición de THS Canadá a la propiedad extranjera de viviendas residenciales.
 - **Moción (EN):** THS Canada's ban on foreign ownership of residential housing.
+- **Infoslide (ES):** En 2022, Canadá implementó una prohibición de cinco años sobre la "propiedad extranjera" de viviendas para abordar la crisis de la vivienda. La prohibición prohíbe que empresas extranjeras e individuos no canadienses compren propiedades residenciales. Las excepciones incluyen residentes permanentes, refugiados y algunos trabajadores temporales.
 - **Infoslide (EN):** In 2022, Canada implemented a five-year ban on "foreign ownership" of housing to address the housing crisis. The ban prohibits foreign companies and non-Canadian individuals from purchasing residential properties. Exceptions include permanent residents, refugees, and some temporary workers.
 
 ### Moción #263 — NUDC 2024 | Round 6
@@ -2604,6 +2605,7 @@
 - **Tema:** Medioambiente
 - **Tipo:** Análisis — Deber (ECCQ [X] debería)
 - **Idioma original:** EN
+- **Moción (ES):** THBT los inversores en tecnologías limpias y tecnológicas climáticas deberían priorizar invertir en startups verdes en países en desarrollo sobre las de países desarrollados
 - **Moción (EN):** THBT cleantech and climate tech investors should prioritize investing in green startups in developing nations over those in developed nations
 
 ### Moción #264 — NUDC 2024 | Round 7
@@ -2612,7 +2614,9 @@
 - **Tema:** General
 - **Tipo:** Apoyo / Oposición (EC apoya / se opone)
 - **Idioma original:** EN
+- **Moción (ES):** SOSTIENE la narrativa de que los individuos deberían tener un fuerte locus de control.
 - **Moción (EN):** THS the narrative that individuals should have a strong locus of control.
+- **Infoslide (ES):** El locus de control es el grado en que las personas creen que ellas, en lugar de fuerzas externas (fuera de su influencia), tienen control sobre el resultado de los eventos en sus vidas. Los individuos con un locus de control fuerte creen que los eventos en sus vidas son principalmente el resultado de sus acciones.
 - **Infoslide (EN):** Locus of control is the degree to which people believe that they, as opposed to external forces (beyond their influence), have control over the outcome of events in their lives. Individuals with a strong locus of control believe events in their lives are primarily a result of their actions.
 
 ### Moción #265 — NUDC 2024 | Round 8
@@ -2621,7 +2625,9 @@
 - **Tema:** Economía y Trabajo
 - **Tipo:** Otra formulación
 - **Idioma original:** EN
+- **Moción (ES):** TH, al igual que el BJP, querría que India se uniera al RCEP.
 - **Moción (EN):** TH, as the BJP, would have India join the RCEP.
+- **Infoslide (ES):** La Asociación Económica Integral Regional (RCEP) es un acuerdo de libre comercio entre las naciones de Asia-Pacífico de Australia, Brunei, Camboya, China, Indonesia, Japón, Laos, Malasia, Myanmar, Nueva Zelanda, Filipinas, Singapur, Corea del Sur, Tailandia y Vietnam. La RCEP implica la eliminación de aranceles y establece normas comunes para el comercio y la propiedad intelectual. El Partido Bharatiya Janata (BJP) es el partido gobernante nacionalista hindú de la India.
 - **Infoslide (EN):** The Regional Comprehensive Economic Partnership (RCEP) is a free trade agreement among the Asia-Pacific nations of Australia, Brunei, Cambodia, China, Indonesia, Japan, Laos, Malaysia, Myanmar, New Zealand, the Philippines, Singapore, South Korea, Thailand, and Vietnam. The RCEP involves the elimination of tariffs and establishes common rules for trade and intellectual property. The Bharatiya Janata Party (BJP) is the Hindu nationalist ruling party of India.
 
 ### Moción #266 — NUDC 2024 | Round 9
@@ -2630,6 +2636,7 @@
 - **Tema:** Política y Estado
 - **Tipo:** Análisis — Deber (ECCQ [X] debería)
 - **Idioma original:** EN
+- **Moción (ES):** THBT el gobierno de EE. UU. debería crear tribunales que cedan la autoridad para enjuiciar juicios penales que involucren a estadounidenses hispanos/latinx (ya sea como víctimas o perpetradores) a grupos de interés minoritario relacionados (por ejemplo: Asociación Latinoamericana).
 - **Moción (EN):** THBT the US government should create courts that cede the authority to prosecute criminal trials involving Hispanic/Latinx Americans (either as victims or perpetrators) to related minority interest groups (ex: Latin American Association).
 
 ### Moción #267 — NUDC 2024 | Quarterfinals
@@ -2638,7 +2645,9 @@
 - **Tema:** Economía y Trabajo
 - **Tipo:** Apoyo / Oposición (EC apoya / se opone)
 - **Idioma original:** EN
+- **Moción (ES):** THS la mayor presencia de los países del Golfo en África.
 - **Moción (EN):** THS the increased presence of Gulf countries in Africa.
+- **Infoslide (ES):** Durante la última década, los países del Golfo han proporcionado ayuda económica, política y militar a varias naciones africanas. Esto incluye a países como Arabia Saudita, Emiratos Árabes Unidos y Catar invirtiendo en Zambia, Etiopía, Sudán, Egipto, etc.
 - **Infoslide (EN):** Over the last decade, countries in the Gulf have provided economic, political, and military aid to various African nations. This includes nations like Saudi Arabia, UAE, and Qatar investing in Zambia, Ethiopia, Sudan, Egypt, etc.
 
 ### Moción #268 — NUDC 2024 | Semifinals
@@ -2647,7 +2656,9 @@
 - **Tema:** Economía y Trabajo
 - **Tipo:** Apoyo / Oposición (EC apoya / se opone)
 - **Idioma original:** EN
+- **Moción (ES):** El uso de las políticas económicas neoliberales de Milei en Argentina.
 - **Moción (EN):** THS the use of Milei’s neoliberal economic policies in Argentina.
+- **Infoslide (ES):** Desde su elección en noviembre de 2023, el Presidente de Argentina, Javier Milei, ha implementado una serie de medidas neoliberales. Estas incluyen la devaluación del Peso, recortes en los subsidios a la energía y el transporte, la cancelación de proyectos de obras públicas y la reducción a la mitad del número de ministerios del gobierno. También ha propuesto un decreto de emergencia de desregulación, que incluye la eliminación de los topes a los alquileres y al precio de productos esenciales, la flexibilización de las leyes laborales y la apertura de empresas estatales para su privatización.
 - **Infoslide (EN):** Since his election in November 2023, the President of Argentina, Javier Milei, has implemented a series of neoliberal measures. These include the devaluation of the Peso, cuts to energy and transportation subsidies, the cancellation of public works projects, and halving the number of government ministries. He has also proposed a deregulation emergency decree, which includes removing caps on rent and the price of essential products, relaxing labor laws, and opening up state enterprises for privatization.
 
 ### Moción #269 — NUDC 2024 | Grand Final
@@ -2656,7 +2667,9 @@
 - **Tema:** Política y Estado
 - **Tipo:** Moción de Análisis (ECCQ / THBT)
 - **Idioma original:** EN
+- **Moción (ES):** THBT el gobierno de Andres Manuel López Obrador (AMLO) ha hecho más daño que bien.
 - **Moción (EN):** THBT Andres Manuel Lopez Obrador's (AMLO) government has done more harm than good.
+- **Infoslide (ES):** AMLO es un político que ha sido el presidente actual de México desde el 1 de diciembre de 2018.
 - **Infoslide (EN):** AMLO is a politician who has been the current president of Mexico since December 1, 2018.
 
 ### Moción #270 — NUDC 2024 | ESL Finals
@@ -2665,6 +2678,7 @@
 - **Tema:** General
 - **Tipo:** Comparativa (ECP / THP)
 - **Idioma original:** EN
+- **Moción (ES):** Regímenes tecnocráticos THP* sobre las democracias actuales en América Latina *un régimen no democrático gobernado por expertos técnicos
 - **Moción (EN):** THP technocratic regimes* over the current democracies in Latin America *a nondemocratic regime governed by technical experts
 
 ### Moción #271 — NUDC 2024 | Novice Finals
@@ -2673,6 +2687,7 @@
 - **Tema:** Relaciones Internacionales
 - **Tipo:** Moción de Análisis (ECCQ / THBT)
 - **Idioma original:** EN
+- **Moción (ES):** THBT es en el mejor interés de los EE. UU. llevar a cabo operaciones militares contra los cárteles de drogas en territorio mexicano.
 - **Moción (EN):** THBT it is in the best interest of the US to carry out military operations against drug cartels in Mexican territory.
 
 ## NUDC 2023
@@ -2683,7 +2698,9 @@
 - **Tema:** Economía y Trabajo
 - **Tipo:** Análisis — Deber (ECCQ [X] debería)
 - **Idioma original:** EN
+- **Moción (ES):** SOSTENEMOS QUE el movimiento progresista debería integrar la ideología post-trabajo en su mensaje.
 - **Moción (EN):** THBT the progressive movement should integrate post-work ideology into its messaging.
+- **Infoslide (ES):** El movimiento post-trabajo cree que la sociedad ideal es aquella que ha hecho obsoleta la necesidad de trabajar (por ejemplo, un mundo en el que el trabajo esté mayormente automatizado o en el que a todos se les proporcione un Ingreso Básico Universal)
 - **Infoslide (EN):** The post-work movement believes that the ideal society is one that has obsoleted the need to work (e.g. a world in which work were mostly automated or everyone were provided a Universal Basic Income)
 
 ### Moción #273 — NUDC 2023 | Round 2
@@ -2692,7 +2709,9 @@
 - **Tema:** General
 - **Tipo:** Moción de Análisis (ECCQ / THBT)
 - **Idioma original:** EN
+- **Moción (ES):** THBT la continua adopción del estilo de política de guerrilla no está en los intereses a largo plazo del PCC
 - **Moción (EN):** THBT the continued adoption of the guerrilla policy style is not in the long term interests of the CCP
+- **Infoslide (ES):** El "estilo de política guerrillera" de China se caracteriza por un enfoque descentralizado de la formulación de políticas, en el que las iniciativas políticas a menudo se desarrollan e implementan a nivel local por funcionarios que tienen un amplio grado de libertad respecto a las autoridades centrales para emprender proyectos políticos. Estas políticas, si tienen éxito, luego se amplían a nivel nacional. Bajo el estilo de política guerrillera de China, los responsables de la formulación de políticas a menudo están dispuestos a aceptar cierto grado de desorden, experimentación e incluso fracaso en la búsqueda de los objetivos políticos.
 - **Infoslide (EN):** China's ""guerrilla policy style"" is characterized by a decentralized approach to policy making, in which policy initiatives are often developed and implemented at the local level by officials who have a large degree of freedom from central authorities in undertaking policy projects. These policies, if successful, are then scaled up to a national level. Under China's guerrilla policy style, policymakers are often willing to accept some degree of disorder, experimentation, and even failure in the pursuit of policy goals.
 
 ### Moción #274 — NUDC 2023 | Round 3
@@ -2701,7 +2720,9 @@
 - **Tema:** General
 - **Tipo:** Comparativa (ECP / THP)
 - **Idioma original:** EN
+- **Moción (ES):** THP un mundo en el que la "Cultura de Pedir" es la norma a uno en el que la "Cultura de Adivinar" es la norma.
 - **Moción (EN):** THP a world in which "Ask Culture" is the norm to one in which "Guess Culture" is the norm.
+- **Infoslide (ES):** La "Cultura de Preguntar" se caracteriza por la expectativa de que los individuos deberían sentirse incentivados a pedir cualquier cosa cuando la desean. La "Cultura de Adivinar" se caracteriza por la expectativa de que los individuos solo deberían hacer solicitudes entre sí en casos donde puedan inferir o asumir que la respuesta será sí.
 - **Infoslide (EN):** ""Ask Culture"" is characterized by the expectation that individuals should feel encouraged to ask for anything when they want it. ""Guess Culture"" is characterized by the expectation that individuals should only make requests of one another in instances where they can infer or assume the answer will be yes.
 
 ### Moción #275 — NUDC 2023 | Round 4
@@ -2710,6 +2731,7 @@
 - **Tema:** Sociedad y Derechos
 - **Tipo:** Comparativa (ECP / THP)
 - **Idioma original:** EN
+- **Moción (ES):** THP un mundo con la creencia dominante de que las personas pueden cambiar a diferentes identidades religiosas a lo largo de su vida
 - **Moción (EN):** THP a world with the dominant belief that people can transition to different religious identities throughout their lifetime
 
 ### Moción #276 — NUDC 2023 | Round 5 (Closed)
@@ -2718,6 +2740,7 @@
 - **Tema:** General
 - **Tipo:** Contrafáctico (EC lamenta / THR)
 - **Idioma original:** EN
+- **Moción (ES):** El aumento de las alas políticas estudiantiles de los principales partidos políticos en los países en desarrollo
 - **Moción (EN):** THR the rise of student political wings of major political parties in developing countries
 
 ### Moción #277 — NUDC 2023 | Round 6
@@ -2726,7 +2749,9 @@
 - **Tema:** General
 - **Tipo:** Otra formulación
 - **Idioma original:** EN
+- **Moción (ES):** THB Estados Unidos y Canadá deberían prohibir el arbitraje obligatorio vinculante.
 - **Moción (EN):** THB the US and Canada should ban Mandatory Binding Arbitration.
+- **Infoslide (ES):** El Arbitraje Vinculante Obligatorio es una cláusula contractual en la que ambas partes de un contrato renuncian a su derecho de demandarse mutuamente en un tribunal por daños relacionados con un posible incumplimiento del contrato. En cambio, en el caso de una supuesta violación contractual, los miembros deben someterse a arbitraje, una forma alternativa de resolución de disputas en la que un árbitro privado acordado mutuamente determina tanto la legitimidad de la presunta violación como la posible sanción. Las cláusulas de MBA también pueden incluir otras estipulaciones, como renunciar al derecho de apelar la decisión o de unirse a demandas colectivas.
 - **Infoslide (EN):** Mandatory Binding Arbitration is a contractual provision in which both parties to a contract waive their right to sue one another in court for damages related to a perceived breach of contract. Instead, in the instance of a perceived contractual violation, members must undergo arbitration, an alternative form of dispute resolution in which a mutually agreed upon private arbiter determines both the legitimacy of the alleged violation as well as the potential punishment. MBA clauses can also often include other stipulations such as waiving one's right to appeal the decision or to join class action lawsuits.
 
 ### Moción #278 — NUDC 2023 | Quarterfinals
@@ -2735,6 +2760,7 @@
 - **Tema:** General
 - **Tipo:** Comparativa (ECP / THP)
 - **Idioma original:** EN
+- **Moción (ES):** THP un mundo donde el arte se envía y se exhibe en museos y galerías de manera anónima para siempre
 - **Moción (EN):** THP a world where art is submitted to and displayed in museums and galleries anonymously forever
 
 ### Moción #279 — NUDC 2023 | Semifinals
@@ -2743,6 +2769,7 @@
 - **Tema:** General
 - **Tipo:** Análisis — Deber (ECCQ [X] debería)
 - **Idioma original:** EN
+- **Moción (ES):** THBT el FMI debería prestar cantidades significativas de dinero a los países fuertemente endeudados con China con el requisito de que estos países incumplan todos los préstamos chinos.
 - **Moción (EN):** THBT the IMF should lend significant amounts of money to countries heavily indebted to China with the requirement that these countries default on all Chinese loans.
 
 ### Moción #280 — NUDC 2023 | Novice Semifinals
@@ -2751,7 +2778,9 @@
 - **Tema:** Política y Estado
 - **Tipo:** Apoyo / Oposición (EC apoya / se opone)
 - **Idioma original:** EN
+- **Moción (ES):** THS una suspensión de experimentos gigantes de IA ordenada por el gobierno
 - **Moción (EN):** THS a government madated halt of giant AI experiments
+- **Infoslide (ES):** Los experimentos gigantes de IA incluyen, pero no se limitan a, modelos de aprendizaje de lenguaje como GPT-4. Otros laboratorios de IA también están desarrollando actualmente proyectos mucho más ambiciosos que son mucho más grandes que los de OpenAI (los creadores de Dall·E 2 y ChatGPT)
 - **Infoslide (EN):** Giant AI experiments include but are not limited to language learning models Like GPT-4. Other AI labs are currently also developing much more ambitious projects that are much larger than that of OpenAI (the creators of Dall E 2 and ChatGPT)
 
 ### Moción #281 — NUDC 2023 | Novice Finals
@@ -2760,7 +2789,9 @@
 - **Tema:** Tecnología e IA
 - **Tipo:** Comparativa (ECP / THP)
 - **Idioma original:** EN
+- **Moción (ES):** THP un mundo con redes sociales basadas en la comunidad, dirigidas democráticamente en lugar de redes sociales administradas por empresas
 - **Moción (EN):** THP a world with community based, democratically run social media instead of company run social media
+- **Infoslide (ES):** Una red social basada en la comunidad y dirigida democráticamente es aquella en la que los usuarios se unen a plataformas específicas de redes sociales según la comunidad o interés, y los miembros de una comunidad determinan sus propias políticas y diseño en términos de algoritmos, moderación, financiamiento y funcionamiento general del sitio para esa plataforma.
 - **Infoslide (EN):** A community based, democratically run social media is one where users join specific social media platforms based on community or interest and members of a community determine their own policies and design in terms of algorithms, moderation, funding, and general functioning of the site for that platform.
 
 ## TODI 2022

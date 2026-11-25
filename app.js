@@ -578,7 +578,7 @@ async function init() {
   loadManualAndRubrics();
 
   try {
-    const res = await fetch("data/mociones.json?v=7", { cache: "no-store" });
+    const res = await fetch("data/mociones.json?v=9", { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     state.data = data;
